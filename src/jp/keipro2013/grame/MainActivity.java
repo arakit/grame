@@ -24,4 +24,5 @@ public class MainActivity extends Activity {
 
 }
 
-//まつながーヽ(^。^)ノ
+//縺ｾ縺､縺ｪ縺後�繝ｽ(^縲�)繝�
+
