@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent"
+	    android:gravity="center"
+	    android:orientation="vertical" >
+
+	    <com.example.graffitimessage.penView
+	        android:id="@+id/penView1"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_above="@+id/bottomLinear"
+	        android:layout_alignParentTop="true"
+	        android:layout_weight="0.60"
+	        android:background="#000000" />
+	    <LinearLayout
+	        android:id="@+id/topLinear"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+	        android:layout_alignParentTop="true"
+	        android:orientation="horizontal" >
+
+	        <Button
+	            android:id="@+id/undo_button"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="Undo" />
+
+	        <Button
+	            android:id="@+id/delete_button"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="Delete" />
+
+	        <Button
+	            android:id="@+id/save_button"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="Save" />
+
+	        <Button
+	            android:id="@+id/redo_button"
+	            style="?android:attr/buttonStyleSmall"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="Redo"/>
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/bottomLinear"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentBottom="true"
+	        android:layout_alignParentLeft="true"
+	        android:orientation="horizontal" >
+
+	        <Button
+	            android:id="@+id/pen_button"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="pen" />
+
+	        <Button
+	            android:id="@+id/eraser_button"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="eraser" />
+
+	        <Button
+	            android:id="@+id/stamp_button"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="stamp" />
+
+	        <Button
+	            android:id="@+id/button8"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:text="" />
+	    </LinearLayout>
+
+	    <LinearLayout
+	        android:id="@+id/EraSizeLinear"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/penView1"
+	        android:layout_alignParentLeft="true"
+	        android:layout_marginBottom="28dp"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+
+	        <SeekBar
+	            android:id="@+id/seekBar1"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBottom="@+id/penView1"
+	            android:layout_alignParentLeft="true"
+	            android:layout_weight="1" />
+
+	    </LinearLayout>
+	    
+	    <LinearLayout
+	        android:id="@+id/PenSizeLinear"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_alignBottom="@+id/penView1"
+	        android:layout_alignParentLeft="true"
+	        android:layout_marginBottom="28dp"
+	        android:orientation="horizontal"
+	        android:visibility="gone" >
+
+	        <SeekBar
+	            android:id="@+id/seekBar2"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:layout_alignBottom="@+id/penView1"
+	            android:layout_alignParentLeft="true"
+	            android:layout_weight="1" />
+
+	    </LinearLayout>
+	  
+	</RelativeLayout>
+	
+	   <GridView
+	       android:id="@+id/stampGrid"
+	       android:layout_width="fill_parent"
+	       android:layout_height="fill_parent"
+	       android:padding="10dp"
+	       android:verticalSpacing="10dp"
+	       android:horizontalSpacing="10dp"
+	       android:numColumns="auto_fit"
+	       android:columnWidth="60dp"
+	       android:stretchMode="columnWidth"
+	       android:gravity="center"
+	       android:background="@drawable/stamp_frame"
+	       android:layout_margin="8dp"
+	       android:visibility="gone" />
+
+</FrameLayout>

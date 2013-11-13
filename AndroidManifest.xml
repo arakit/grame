@@ -10,11 +10,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="jp.keipro2013.grame.MainActivity"
+            android:name="com.example.graffitimessage.Title"
+            android:noHistory="true"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +23,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.graffitimessage.PackageBOX"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.SakuseiMenu"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.CameraEx"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.Preview"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.PuzzleActivity"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.PuzzleBlack"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.RouteActivity"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.RoutePreview"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.SyuseiMenu"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.Mail"></activity>
+        <activity android:name="com.example.graffitimessage.DrawBm"
+            android:noHistory="true"></activity>
+        <activity android:name="com.example.graffitimessage.MainActivity"
+            android:noHistory="true"></activity>
     </application>
-
+   
+    
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+	<uses-feature android:name="android.hardware.camera.flash" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
 </manifest>

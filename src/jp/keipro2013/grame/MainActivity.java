@@ -1,28 +1,154 @@
 package jp.keipro2013.grame;
 
+import java.util.List;
+
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.PixelFormat;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.view.Menu;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.ViewGroup.LayoutParams;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
 
-public class MainActivity extends Activity {
+public class MainActivity extends Activity implements SensorEventListener{
+	private SensorManager sensorManager;
+	private Sensor accelerometer;
+	private Sensor orientation;
+	private OverLay ov;
+	
+	
+	//ˆÜ“x
+	public double latitude;
+	//Œo“x
+	public double longitude;
+	//•W‚
+	public double altitude;
 
+	static float gx, gy, gz = 0; //x,y,z²‚ÌŒX‚«
+	static float direct, pitch, rall = 0; //•ûˆÊ,ƒsƒbƒ`,ƒ[ƒ‹
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
+		Log.i("System.out" , "ƒƒCƒ“ƒAƒNƒeƒBƒrƒeƒB");
+
+		//ƒJƒƒ‰
+		getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+		getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+
 		setContentView(R.layout.activity_main);
+
+		FrameLayout ct = (FrameLayout) findViewById(R.id.container);
+		ViewTest vt = new ViewTest(this);
+		CameraUkete cv = new CameraUkete(this);
+
+		//vt.getHolder().setFormat( PixelFormat.TRANSLUCENT );
+
+		//AR‰æ–Ê
+		ct.addView(vt);
+		//ƒJƒƒ‰‰æ–Ê
+		ct.addView(cv);
 		
+		//mirai AR(OverLay)
+		//ct.addView(new OverLay(this), new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT)); 
 		
+		//setContentView(ct);
+
+		/*
+		Gps gps = new Gps();
+		//gps.onCreate(savedInstanceState);
+		Log.i("System.out" , "ˆÜ“x" + gps.GetLatitude() );
+		Log.i("System.out" , "Œo“x" + gps.GetLongitude() );
+		Log.i("System.out" , "‚“x" + gps.GetAltitude() );
+
+		InclinationSensor is = new InclinationSensor();
+		//is.onCreate(savedInstanceState);
+		Log.i("System.out" , "•ûˆÊŠp" + is.GetDirection() );
+		Log.i("System.out" , "ŒXÎŠp" + is.GetInclination() );
+		Log.i("System.out" , "‰ñ“]Šp" + is.GetRotation() );
+		*/
+		Log.i("System.out" , "I‚í‚è");
+		
+		sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
+		 
+	    //ƒZƒ“ƒT[‚Ìæ“¾
+	    List<Sensor> list;
+	    list=sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+	    if (list.size()>0) accelerometer = list.get(0);
+	    list=sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+	    if (list.size()>0) orientation = list.get(0);
 	}
 
+
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	public boolean dispatchKeyEvent(KeyEvent event) {
+		if (event.getAction() == KeyEvent.ACTION_DOWN) {
+			switch (event.getKeyCode()) {
+			case KeyEvent.KEYCODE_BACK:
+				Intent intent1 = new Intent(MainActivity.this, Title.class);
+				try {
+					startActivity(intent1);
+				} catch (Exception e) {
+
+				}
+				return true;
+			}
+		}
+		return super.dispatchKeyEvent(event);
 	}
 	
-
+	//ƒAƒvƒŠ‚ÌŠJn
+	   protected void onResume(){
+	      //ƒAƒvƒŠ‚ÌŠJn
+	      super.onResume();
+	 
+	      //ƒZƒ“ƒT[‚Ìˆ—‚ÌŠJn
+	      if (accelerometer!=null)
+	    	  sensorManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
+	      if (orientation!=null)
+	    	  sensorManager.registerListener(this,orientation,SensorManager.SENSOR_DELAY_FASTEST);
+	   }
+	 
+	   //ƒAƒvƒŠ‚Ì’â~
+	   protected void onStop(){
+	      //ƒZƒ“ƒT[‚Ìˆ—‚Ì’â~
+	      sensorManager.unregisterListener(this);
+	 
+	      //ƒAƒvƒŠ‚Ì’â~
+	      super.onStop();
+	   }   
+	 
+	   //ƒZƒ“ƒT[ƒŠƒXƒi[‚Ìˆ—
+	   public void onSensorChanged(SensorEvent event){
+		  //‰Á‘¬“x‚Ìæ“¾
+		   if (event.sensor==accelerometer){
+		    	  gx = -event.values[0];
+		    	  gy = event.values[1];
+		    	  gz = event.values[2];
+		      }
+		  //•ûˆÊ‚Ìæ“¾
+		   if (event.sensor==orientation){
+		    	  direct = event.values[0];
+		    	  pitch = -event.values[1];
+		    	  rall = -event.values[2];
+		      }
+	   }
+	 
+	   //¸“x•ÏXƒCƒxƒ“ƒg‚Ìˆ—
+	   public void onAccuracyChanged(Sensor sensor,int accuracy){}
+	 
+	   // ”jŠü‚ÌÛ‚ÉÀs
+	   public void onDestroy(){
+	      super.onDestroy();
+	   }
 }
-
-//ç¸ºï½¾ç¸ºï½¤ç¸ºï½ªç¸ºå¾Œï¿½ç¹ï½½(^ç¸²ï¿½)ç¹ï¿½
-

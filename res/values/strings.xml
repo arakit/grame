@@ -4,5 +4,17 @@
     <string name="app_name">Graffiti Message</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="clean">全消し</string>
+	<string name="save">保存</string>
+	<string name="finish">終了</string>
+	<string name="pen">ペン</string>
+	<string name="erasor">消しゴム</string>
+	<string name="back">戻る</string>
+	<string name="erasor2">Button 2</string>
+	<string name="button">ペン</string>
+	<string name="button3">スタンプ</string>
+	<string name="pen2">ペン</string>
+	<string name="erasor3">ケシゴム</string>
+	<string name="stamp">スタンプ</string>
 
 </resources>
