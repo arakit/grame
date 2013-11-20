@@ -39,7 +39,7 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		int w = dp.getWidth();
 		int h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.backt);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		
 		int deg = 90;
@@ -54,12 +54,12 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
 		imageButton2 = new ImageButton(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.kakutei);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.ok);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
 		imageButton3 = new ImageButton(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.no);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.nont);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton3.setImageBitmap(image);
 		imageButton3.setOnClickListener(this);

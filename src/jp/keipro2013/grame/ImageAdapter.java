@@ -45,8 +45,10 @@ public class ImageAdapter extends BaseAdapter {
             R.drawable.stamp0, R.drawable.stamp1,
             R.drawable.stamp2, R.drawable.stamp3,
             R.drawable.stamp4, R.drawable.stamp5,
-            //R.drawable.stamp6, R.drawable.stamp7,
+            //R.drawable.stamp6, 
+            R.drawable.stamp7,
             R.drawable.stamp8, R.drawable.stamp9,
-            R.drawable.stamp10, R.drawable.stamp11
+            R.drawable.stamp10, R.drawable.stamp11,
+            R.drawable.stamp12, R.drawable.stamp13
     };
 }

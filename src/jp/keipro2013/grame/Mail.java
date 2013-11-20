@@ -30,7 +30,7 @@ public class Mail extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.soushin);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.send);
 		image = Bitmap.createScaledBitmap(image, w/2, h/8, false);
 
 		AbsoluteLayout layout = new AbsoluteLayout(this);
@@ -43,7 +43,7 @@ public class Mail extends Activity implements View.OnClickListener {
 		imageButton.setImageBitmap(image);
 		imageButton.setBackgroundDrawable(null);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.chushi);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.cancelt);
 		image = Bitmap.createScaledBitmap(image, w/2, h/8, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);

@@ -39,7 +39,7 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.enpitsu);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.enp);
 		image = Bitmap.createScaledBitmap(image, w/5, w/5, false);
 
 		AbsoluteLayout layout = new AbsoluteLayout(this);
@@ -64,12 +64,12 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 		imageButton4 = new ImageButton(this);
 		imageButton4.setImageBitmap(image);
 		imageButton4.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.backt);
 		image = Bitmap.createScaledBitmap(image, w/4, h/13, false);
 		imageButton5 = new ImageButton(this);
 		imageButton5.setImageBitmap(image);
 		imageButton5.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.sinki);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.createt);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/10, false);
 		bm=image.getWidth();
 		imageButton6 = new ImageButton(this);
@@ -168,7 +168,7 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 				View layout1 = this.getLayoutInflater().inflate(R.layout.pbox,(ViewGroup) findViewById(R.id.layout_root));
 
 				ImageButton img1 = (ImageButton) layout1.findViewById(R.id.img1);
-				img1.setImageResource(R.drawable.enpitsu);
+				img1.setImageResource(R.drawable.enp);
 
 				ImageButton img2 = (ImageButton) layout1.findViewById(R.id.img2);
 				img2.setImageResource(R.drawable.syusei);

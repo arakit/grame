@@ -32,7 +32,7 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.sakusei);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.messaget);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		bm=image.getWidth();
 		AbsoluteLayout layout = new AbsoluteLayout(this);
@@ -48,12 +48,12 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.ichizihozon);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.pouse);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);
 		imageButton3.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.kanryou);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.finish);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		imageButton4 = new ImageButton(this);
 		imageButton4.setImageBitmap(image);

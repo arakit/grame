@@ -32,7 +32,7 @@ public class SyuseiMenu extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.r_syusei);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.graffiti);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		bm=image.getWidth();
 		AbsoluteLayout layout = new AbsoluteLayout(this);
@@ -43,12 +43,12 @@ public class SyuseiMenu extends Activity implements View.OnClickListener {
 		imageButton = new ImageButton(this);
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.rj_syusei);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.route);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.backt);
 		image = Bitmap.createScaledBitmap(image, w/4, h/13, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);

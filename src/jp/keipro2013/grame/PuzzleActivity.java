@@ -54,20 +54,20 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.hidari);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		Button = new ImageButton(this);
 		Button.setImageBitmap(image);
 		Button.setOnClickListener(this);
 
 		Button2 = new ImageButton(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.kettei);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.ok);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		Button2.setImageBitmap(image);
 		Button2.setOnClickListener(this);
 
 		Button3 = new ImageButton(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.migi);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.susumu);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		Button3.setImageBitmap(image);
 		Button3.setOnClickListener(this);

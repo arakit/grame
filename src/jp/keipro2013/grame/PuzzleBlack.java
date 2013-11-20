@@ -55,7 +55,7 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.kanryou);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.ok);
 		image = Bitmap.createScaledBitmap(image, w/2, h/10, false);
 
 		Button = new ImageButton(this);

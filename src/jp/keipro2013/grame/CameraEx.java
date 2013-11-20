@@ -58,17 +58,17 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
         
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new CameraView(this));
-        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.backt);
         image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
         imageButton = new ImageButton(this);
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.shutter);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.camerat);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.no);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.nont);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);

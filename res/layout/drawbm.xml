@@ -32,7 +32,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="Undo" />
+	            android:background="@drawable/modoru"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/delete_button"
@@ -40,7 +41,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="Delete" />
+	            android:background="@drawable/delete"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/save_button"
@@ -48,7 +50,8 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="Save" />
+	            android:background="@drawable/savet"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/redo_button"
@@ -56,7 +59,9 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="Redo"/>
+	            android:background="@drawable/susumu"
+	            android:text="" />
+
 	    </LinearLayout>
 
 	    <LinearLayout
@@ -72,28 +77,33 @@
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="pen" />
+	            android:background="@drawable/enpitsu"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/eraser_button"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="eraser" />
+	            android:background="@drawable/eraser"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/stamp_button"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
-	            android:text="stamp" />
+	            android:background="@drawable/stamp"
+	            android:text="" />
 
 	        <Button
 	            android:id="@+id/button8"
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_weight="1"
+	            android:background="@drawable/nont"
 	            android:text="" />
+
 	    </LinearLayout>
 
 	    <LinearLayout

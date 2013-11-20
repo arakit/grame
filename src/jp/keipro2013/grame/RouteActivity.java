@@ -57,17 +57,17 @@ public class RouteActivity extends Activity implements LocationListener, View.On
      	w = dp.getWidth();
      	h = dp.getHeight();
         
-        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.modoru);
+        Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.backt);
         image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
         imageButton = new ImageButton(this);
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.shutter);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.camerat);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.sentaku);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.order);
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);
