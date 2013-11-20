@@ -15,7 +15,7 @@ import android.view.View;
 
 public class OverLay extends View{
 	private int width, height; 
-	Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.d);
+	Bitmap image = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/drawbm/test2.png");
 	Bitmap image2;
 	int w = image.getWidth();
 	int h = image.getHeight();
@@ -55,8 +55,8 @@ public class OverLay extends View{
 	  deg = (int)MainActivity.rall;
 	  mat.postRotate(0);
 	  image2 = Bitmap.createBitmap(image, 0, 0, w, h, mat, true);
-	  canvas.drawBitmap(image, w*2-d, h+h/2 + e*50 - 90*50, null);
-	
+	  //canvas.drawBitmap(image, w*2-d, h+h/2 + e*50 - 90*50, null);
+	  canvas.drawBitmap(image, 0, 0, null);
 	  invalidate();
 	 }
 }
