@@ -220,7 +220,6 @@ public class penView extends View {
 		
 		Bitmap newbitmap = Bitmap.createBitmap(bmpBack.getWidth(), bmpBack.getHeight(), Bitmap.Config.ARGB_8888);
 		Canvas saveImage = new Canvas(newbitmap);
-		//saveImage.drawBitmap(bmpBack, 0, 0, null);
 		saveImage.drawBitmap(bmpCanvas, 0, 0, null);
 
 		File file = new File(Environment.getExternalStorageDirectory()
@@ -240,12 +239,24 @@ public class penView extends View {
 			newbitmap.compress(CompressFormat.PNG, 100, out);
 			out.flush();
 			out.close();
-			if (saveNum != 1){
+			if (saveNum != 2){
 				
 			}
 			if (saveNum == 1)
 				saveNum++;
 		} catch (Exception e) {
+			
+		}
+		saveImage.drawBitmap(bmpBack, 0, 0, null);
+		saveImage.drawBitmap(bmpCanvas, 0, 0, null);
+		AttachName = file.getAbsolutePath() + "/";
+		AttachName += "test" + saveNum + ".jpg";
+		try {
+			FileOutputStream out = new FileOutputStream(AttachName);
+			newbitmap.compress(CompressFormat.JPEG, 100, out);
+			out.flush();
+			out.close();
+		}catch (Exception e) {
 			
 		}
 	}
