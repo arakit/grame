@@ -31,7 +31,7 @@ public class penView extends View {
 	private float oldx = 0f;
 	private float oldy = 0f;
 	
-	private Canvas dCanvas;	
+	private Canvas dCanvas;
 	private Bitmap bmpCanvas = null;
 	private Bitmap bmpBack = null;
 	int saveNum = 1;

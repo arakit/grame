@@ -10,7 +10,7 @@
 	    android:gravity="center"
 	    android:orientation="vertical" >
 
-	    <com.example.graffitimessage.penView
+	    <jp.keipro2013.grame.penView
 	        android:id="@+id/penView1"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
