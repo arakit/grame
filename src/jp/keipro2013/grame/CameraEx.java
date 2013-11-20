@@ -1,5 +1,6 @@
 package jp.keipro2013.grame;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -35,8 +36,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 public class CameraEx extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback {
-	static double latitude,lat; //緯度
-	static double longtude,lon; //軽度
+	static double latitude,lat;
+	static double longtude,lon;
 	int w,h;
 	
 	CameraOverlay overlay;
@@ -46,12 +47,9 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
     @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        
-        // WindowManager取得
+
      	WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-     	// Displayインスタンス生成
      	Display dp = wm.getDefaultDisplay();
-     	// ディスプレイサイズ取得
      	w = dp.getWidth();
      	h = dp.getHeight();
         
@@ -74,106 +72,32 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		image = Bitmap.createScaledBitmap(image, w/3, h/10, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);
-		//imageButton.setOnClickListener((OnClickListener) this);
-		// setLLParams(imageButton);
 		
-	    //lpb.gravity =Gravity.BOTTOM;
-	    
-		//CameraView.addView(imageButton, new AbsoluteLayout.LayoutParams(dp_w / 3, 150, dp_w/3, dp_h /3+100));
-        
-        //if(Preview.d!=1){
         	new AlertDialog.Builder(this)
         	    	.setCancelable(false)    	
         	    	.setMessage("メッセージ作成するための写真撮影を行います。")    	
         	    	.setPositiveButton("はい",null)    	
         	    	.show();
-        //}
+        	
         LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-		// PowerRequirementを指定(低消費電力)
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
-		// ロケーションプロバイダの取得
 		String provider = mLocationManager.getBestProvider(criteria, true);
 		mLocationManager.requestLocationUpdates(provider, 0, 0, this);
-		
-		//overlay = new CameraOverlay(this);
-	    //LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
-	    //addContentView(overlay, lp);
-	 
-	    //Button button_shutter = new Button(this);
-	    //button_shutter.setText("撮影");
-	    //LayoutParams lpb = new LayoutParams(new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, Gravity.BOTTOM));
-	    //LayoutParams lps = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	    //lpb.gravity =Gravity.BOTTOM;
-	    //addContentView(button_shutter, lpb);
-	    //addContentView(imageButton, lpb);
-	    //addContentView(imageButton, lpb);
-	    //addContentView(imageButton2, lps);
-	    /*button_shutter.setOnClickListener(new OnClickListener() {
-	      @Override
-	      public void onClick(View view) {
-	        ToneGenerator toneGenerator = new ToneGenerator(AudioManager.STREAM_SYSTEM, ToneGenerator.MAX_VOLUME);
-	        toneGenerator.startTone(ToneGenerator.TONE_PROP_BEEP);
-	 
-	        mCamera.takePicture(mShutterListener, rawListener, jpegListener);
-	      }
-	    });*/
-	    /*
-	    RelativeLayout relativeLayout = new RelativeLayout(this);
-	    
-	    RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	    RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	    RelativeLayout.LayoutParams param3 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	     
-	    // マージンを指定（左、上、右、下）
-	    param.setMargins(5, 5, 15, 0);
-	    param2.setMargins(5, 5, 15, 0);
-	    param3.setMargins(5, 5, 15, 0);
-	    param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param3.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 2);
-	    param2.addRule(RelativeLayout.CENTER_HORIZONTAL, 2);
-	    param3.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 2);
-	    relativeLayout.addView(imageButton, param);
-	    relativeLayout.addView(imageButton2, param2);
-	    relativeLayout.addView(imageButton3, param3);
-	    */
+
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 	    addContentView(layout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-	    //AbsoluteLayout layout = new AbsoluteLayout(this);
+	  
 	    layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w / 3, h/10, 0, h-h/10));
 		layout.addView(imageButton2, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3, h-h/10));
 		layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3*2, h-h/10));
     }
     
     public void onLocationChanged(Location location) {
-		// 緯度の表示
-		// TextView tv_lat = (TextView) findViewById(R.id.textView1);
-		// tv_lat.setText("緯度:"+location.getLatitude());
 		latitude = location.getLatitude();
-		// 経度の表示
-		// TextView tv_lng = (TextView) findViewById(R.id.textView3);
-		// tv_lng.setText("経度:"+location.getLongitude());
 		longtude = location.getLongitude();
 	}
-    
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-    	if(CameraView.a==1){
-        if (event.getAction()==MotionEvent.ACTION_DOWN) {
-        	// TODO Auto-generated method stub
-    			Intent intent1 = new Intent(CameraEx.this, Preview.class);
-    			try {
-    				startActivity(intent1);
-    			} catch (Exception e) {
-
-    			}
-        }
-    	}
-        return true;
-    }*/
 
 	@Override
 	public void onProviderDisabled(String arg0) {
@@ -213,9 +137,18 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 
 	@Override
 	public void onPictureTaken(byte[] data,Camera camera) {
+		
+		File file = new File(Environment.getExternalStorageDirectory() + "/drawbm/");
+		try {
+			if (!file.exists()) {
+				file.mkdir();
+			}
+		}catch (SecurityException e) {
+			}
+		
         try {
-        	String path=Environment.getExternalStorageDirectory() + "/drawbm/test.jpg";
-            //String path=Environment.getExternalStorageDirectory().getPath() + "/drawbm/test.jpg";
+        	String path=file.getAbsolutePath();
+        	path += "/" + "test.jpg";
             data2file(data,path);
             System.out.println("");
         } catch (Exception e) {
@@ -240,7 +173,7 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 	
 	public void Intentto(){
     	Intent intent = new Intent();
-    	intent.setClassName("com.example.graffitimessage", "com.example.graffitimessage.Preview");
+    	intent.setClassName("jp.keipro2013.grame", "jp.keipro2013.grame.Preview");
     	startActivity(intent);
     	}
 
@@ -250,30 +183,15 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
     	if(camera != null) {
             camera.stopPreview();
  
-            // 縦画面対応
             camera.setDisplayOrientation(90);
- 
-            // カメラの場合、縦横が逆なので入れ替え
+
             int temp = w;
             w = h;
             h = temp;
-            //int prevWidth = 100, prevHeight = 200, picWidth = 400, picHeight = 800;
             Camera.Parameters params = camera.getParameters();
- 
-            //フラッシュ
+
             params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
-            
-            // プレビューサイズの確定
-            //params.setPreviewFormat(format);
-            //params.setPreviewSize(prevWidth, prevHeight);
-            //params.setPreviewSize(w,h);
- 
-            // 写真サイズの確定
-            //params.setPictureFormat(format);
-            //params.setPictureSize(picWidth, picHeight);
-            //params.setPictureSize(720,1280);
- 
-            // jpg保存時の回転状態指定
+
             params.setRotation(90);
  
             camera.setParameters(params);
@@ -303,8 +221,7 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
-				// ダイアログ表示など特定の処理を行いたい場合はここに記述
-				// 親クラスのdispatchKeyEvent()を呼び出さずにtrueを返す
+
 				return true;
 			}
 		}

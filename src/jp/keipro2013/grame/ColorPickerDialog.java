@@ -95,7 +95,6 @@ public class ColorPickerDialog extends Dialog {
                 lg = new LinearGradient(OK_X0, 0, OK_X1, 0, mChroma, null, Shader.TileMode.CLAMP);
                 mPaintC.setShader(lg);
 
-                //canvas.drawRect(OK_X0, OK_X0 + (CENTER_X * y), OK_X1, OK_X0 + (float)(CENTER_X * (y)), mPaintC);
             	canvas.drawLine(OK_X0, OK_X0 + (CENTER_X * y), OK_X1, OK_X0 + (float)(CENTER_X * (y)), mPaintC);
             }
         }
@@ -115,7 +114,6 @@ public class ColorPickerDialog extends Dialog {
             textPaint.setColor(Color.WHITE);
             textPaint.setTextSize(20);
             textPaint.setAntiAlias(true);
-            //canvas.drawText("OK", 0 - 12, (float) (CENTER_X * 1.2) + 22, textPaint);
             canvas.drawText("OK", 0 - 14, (float) (CENTER_X * 1.4) + 2, textPaint);
 
             if (mTrackingOK) {
@@ -128,7 +126,6 @@ public class ColorPickerDialog extends Dialog {
                     mOKPaint.setAlpha(0x80);
 
                 float padding = 5;
-                //canvas.drawCircle(0, 0, CENTER_RADIUS + mOKPaint.getStrokeWidth(), mOKPaint);
                 canvas.drawRoundRect(new RectF(OK_X0 - padding, OK_Y0 - padding, OK_X1 + padding, OK_Y1 + padding), 5, 5, mOKPaint);
                 mOKPaint.setStyle(Paint.Style.FILL);
                 mOKPaint.setColor(c);
@@ -175,7 +172,6 @@ public class ColorPickerDialog extends Dialog {
             int i = (int)p;
             p -= i;
 
-            // now p is just the fractional part [0...1) and i is the index
             int c0 = colors[i];
             int c1 = colors[i+1];
             int a = ave(Color.alpha(c0), Color.alpha(c1), p);
@@ -279,10 +275,7 @@ public class ColorPickerDialog extends Dialog {
                         }
                         selectColor = interpColor(mColors, unit);
                         mOKPaint.setColor(selectColor);
-                        //mChroma[1] = selectColor;
                         selectHue = getHue(selectColor);
-                        //lg = new LinearGradient(OK_X0, 0, OK_X1, 0, mChroma, null, Shader.TileMode.CLAMP);
-                        //mPaintC.setShader(lg);
                         invalidate();
                     } 
                     else if(inRect){
@@ -297,7 +290,7 @@ public class ColorPickerDialog extends Dialog {
                         if (inOK) {
                             mListener.colorChanged(mOKPaint.getColor());
                         }
-                        mTrackingOK = false;    // so we draw w/o halo
+                        mTrackingOK = false;
                         invalidate();
                     }
                     break;
@@ -322,9 +315,7 @@ public class ColorPickerDialog extends Dialog {
             }
         };
         
-        //LinearLayout.LayoutParams li = new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT,LayoutParams.FILL_PARENT);
         ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        //li.gravity =  Gravity.CENTER;
         setContentView(new ColorPickerView(getContext(), l, mInitialColor), lp);
         setTitle("- Color -");
     }

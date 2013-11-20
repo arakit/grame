@@ -34,11 +34,8 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		super.onCreate(icicle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// WindowManager取得
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// Displayインスタンス生成
 		Display dp = wm.getDefaultDisplay();
-		// ディスプレイサイズ取得
 		int w = dp.getWidth();
 		int h = dp.getHeight();
 		
@@ -49,10 +46,8 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		Matrix mat = new Matrix();
 		mat.postRotate( deg );
 
-		// レイアウトの生成
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 		layout.setBackgroundColor(Color.rgb(0, 0, 0));
-		//layout.setBackgroundResource(R.drawable.grame);
 		setContentView(layout);
 		
 		imageButton = new ImageButton(this);		
@@ -84,7 +79,6 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
 		if (arg0 == imageButton2){
 			d=1;
 			drawdialog();
@@ -105,12 +99,7 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		alertDialogBuilder.setPositiveButton("いいえ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    	/*Intent intent1 = new Intent(Preview.this, CameraEx.class);
-            			try {
-            				startActivity(intent1);
-            			} catch (Exception e) {
-
-            			}*/
+                    	
                     }
                 });
 		alertDialogBuilder.setNegativeButton("はい",
@@ -138,8 +127,6 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
-				// ダイアログ表示など特定の処理を行いたい場合はここに記述
-				// 親クラスのdispatchKeyEvent()を呼び出さずにtrueを返す
 				return true;
 			}
 		}

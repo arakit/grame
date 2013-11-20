@@ -25,18 +25,14 @@ public class Mail extends Activity implements View.OnClickListener {
 		super.onCreate(icicle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// WindowManager取得
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// Displayインスタンス生成
 		Display dp = wm.getDefaultDisplay();
-		// ディスプレイサイズ取得
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
 		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.soushin);
 		image = Bitmap.createScaledBitmap(image, w/2, h/8, false);
 
-		// レイアウトの生成
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 		layout.setBackgroundColor(Color.rgb(255, 255, 255));
 		
@@ -59,25 +55,16 @@ public class Mail extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if (v == imageButton){
-			// Intentインスタンスを生成  
 			Intent intent = new Intent();  
-			  
-			// アクションを指定(ACTION_SENDTOではないところがミソ)  
+			
 			intent.setAction(Intent.ACTION_SEND);  
-			// データタイプを指定  
 			intent.setType("message/rfc822");  
 			  
-			// 宛先を指定  
-			intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"ぷっちょさん"});  
-			// CCを指定  
-			//intent.putExtra(Intent.EXTRA_CC, new String[]{""});  
-			// BCCを指定  
-			//intent.putExtra(Intent.EXTRA_BCC, new String[]{"bcc"});  
-			// 件名を指定  
+			intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"matsuboo"});  
+			//intent.putExtra(Intent.EXTRA_CC, new String[]{"CC"});  
+			//intent.putExtra(Intent.EXTRA_BCC, new String[]{"BCC"});  
 			intent.putExtra(Intent.EXTRA_SUBJECT, "Graffiti Message");  
-			// 本文を指定  
 			intent.putExtra(Intent.EXTRA_TEXT, "A様宛にBから素敵なメッセージが届いていますよ。\n\n" +
 					"スタート位置:http:\n\n" +
 					"Graffiti Messageをお持ちでない方は\n" +
@@ -104,8 +91,6 @@ public class Mail extends Activity implements View.OnClickListener {
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
-				// ダイアログ表示など特定の処理を行いたい場合はここに記述
-				// 親クラスのdispatchKeyEvent()を呼び出さずにtrueを返す
 				return true;
 			}
 		}

@@ -18,7 +18,6 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
-//ÉCÉÅÅ[ÉWÇÃï`âÊ
 public class PuzzleBlackView extends View {
     static Bitmap image,image1,image2,image3;
 	private Bitmap bmp;
@@ -34,8 +33,7 @@ public class PuzzleBlackView extends View {
     static Paint paint,paint2,paint3,paint4,paint5,paint6,paint7,paint8;
     private Activity _context;
 	float x,y;
-	//int br,br2=0;
-    //ÉRÉìÉXÉgÉâÉNÉ^
+
     public PuzzleBlackView(Context context) {
         super(context);
         
@@ -43,8 +41,7 @@ public class PuzzleBlackView extends View {
         
         paint = new Paint();
         paint.setColor(Color.RED);
-        //paint.setAntiAlias(true);
-        //setBackgroundColor(Color.TRANSPARENT);
+
         paint.setStrokeWidth(6);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -99,11 +96,6 @@ public class PuzzleBlackView extends View {
         paint8.setStrokeCap(Paint.Cap.ROUND);
         paint8.setStrokeJoin(Paint.Join.ROUND);
         
-        //bmp = Bitmap.createBitmap(1196, 720, Bitmap.Config.ARGB_8888);
-        
-        //bmpCanvas.drawColor(Color.TRANSPARENT);
-        
-        //ÉMÉÉÉâÉäÅ[ÇÃâÊëúì«Ç›çûÇ›
         image = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/drawbm/test2.jpg");
         
         w = image.getWidth();
@@ -112,7 +104,6 @@ public class PuzzleBlackView extends View {
         bmpCanvas = new Canvas(bmp);
         image1 = BitmapFactory.decodeResource(getResources(), R.drawable.brack);
 		image1 = Bitmap.createScaledBitmap(image1, w, h, false);
-		//image0 = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/drawbm/test2.jpg");
 		w2 = image1.getWidth();
         h2 = image1.getHeight();
     }
@@ -132,10 +123,8 @@ public class PuzzleBlackView extends View {
 
     	 }
 
-    //ï`âÊéûÇ…åƒÇŒÇÍÇÈ
 	@Override 
     public void onDraw(Canvas canvas) {
-		//canvas.drawBitmap(image, 0, 0, null);
 		canvas.drawBitmap(bmp,0,0,null);
 		
 			if(PuzzleBlack.a2==2){
@@ -145,21 +134,18 @@ public class PuzzleBlackView extends View {
 			
 				
 				else if(PuzzleBlack.a2==3){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			 		bmpCanvas.drawLine(0, height/3, width, height/3, paint8);
 			 		bmpCanvas.drawLine(0, height/3*2, width, height/3*2, paint8);
 				}
 			
 				else if(PuzzleBlack.a2==4){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);			    	
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint);
 			    	bmpCanvas.drawLine(0, height/2, width, height/2, paint8);					
 				}
 				
 				else if(PuzzleBlack.a2==5){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height/2, paint3);
 			 		bmpCanvas.drawLine(width/3, height/2, width/3, height, paint3);
@@ -168,7 +154,6 @@ public class PuzzleBlackView extends View {
 				}
 			
 				else if(PuzzleBlack.a2==6){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint2);
 			    	bmpCanvas.drawLine(0, height/3, width, height/3, paint8);
@@ -176,7 +161,6 @@ public class PuzzleBlackView extends View {
 				}
 				
 				else if(PuzzleBlack.a2==7){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);					
 			    	bmpCanvas.drawLine(width/3, 0, width/3, height/2, paint4);
 			 		bmpCanvas.drawLine(width/3*2, 0, width/3*2, height/2, paint4);
@@ -187,7 +171,6 @@ public class PuzzleBlackView extends View {
 				}
 			
 				else if(PuzzleBlack.a2==8){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint);
 			    	bmpCanvas.drawLine(0, height/4, width, height/4, paint8);
@@ -196,7 +179,6 @@ public class PuzzleBlackView extends View {
 				}
 				
 				else if(PuzzleBlack.a2==9){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			    	bmpCanvas.drawLine(width/3, 0, width/3, height, paint5);
 			    	bmpCanvas.drawLine(width/3*2, 0, width/3*2, height, paint5);
@@ -205,7 +187,6 @@ public class PuzzleBlackView extends View {
 				}
 								
 				else if(PuzzleBlack.a2==10){
-					//bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint6);
 			    	bmpCanvas.drawLine(0, height/5, width, height/5, paint8);
@@ -218,10 +199,9 @@ public class PuzzleBlackView extends View {
 	
 	public void saveToFile(int a2, int s, int g){
 		 if(!sdcardWriteReady()){
-		 Toast.makeText(_context, "SDcardÇ™îFéØÇ≥ÇÍÇ‹ÇπÇÒÅB", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "Please insert SDcard", Toast.LENGTH_SHORT).show();
 		 return;
 		 }
-		 
 		 
 		 File file = new File(Environment.getExternalStorageDirectory().getPath()+"/drawbm/puzzle"+a2+"/");
 		 try{
@@ -234,26 +214,19 @@ public class PuzzleBlackView extends View {
 		 image1 = BitmapFactory.decodeResource(getResources(), R.drawable.brack);
 		 image1 = Bitmap.createScaledBitmap(image1, w, h, false);
 		 }catch(SecurityException e){
-			 Toast.makeText(_context, "ó·äOî≠ê∂", Toast.LENGTH_SHORT).show();
+			 Toast.makeText(_context, "Problem occurred", Toast.LENGTH_SHORT).show();
 		 }
 		 for(int i=s; i<g; i++){
-			 
-			 //âÊëúçÏê¨
+
 			 if(PuzzleBlack.a2==2){
-				    //ÇQï™äÑ
 			        a = h/2;
 			        aa = (int)a;
 			        b = w;
 			        if(i==0&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, 0, 0, b, aa);
-			        //else if(i==0&&br[1]!=1)
-			        //p = Bitmap.createBitmap(image, 0, 0, b, aa);
 			        if(i==1&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, 0, aa, b, aa);
-			        //else if(i==1&&br[2]!=1)
-				    //p = Bitmap.createBitmap(image, 0, aa, b, aa);
 				 }else if(PuzzleBlack.a2==3){
-			        //ÇRï™äÑ
 			        a = h/3;
 			        aa = (int)a;
 			        b = w;
@@ -264,7 +237,6 @@ public class PuzzleBlackView extends View {
 			        if(i==4&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, 0, aa*2, b, aa);
 				 }else if(PuzzleBlack.a2==4){
-			        //ÇSï™äÑ
 			        a = h/2;
 			        aa = (int)a;
 			        b = w/2;
@@ -277,7 +249,6 @@ public class PuzzleBlackView extends View {
 			        if(i==8&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, b, aa, b, aa);
 				 }else if(PuzzleBlack.a2==5){
-			        //ÇTï™äÑ
 			        a = w/3;
 			        aa = (int)a;
 			        b = h/2;
@@ -291,8 +262,7 @@ public class PuzzleBlackView extends View {
 			        p = Bitmap.createBitmap(image1, aa, b, aa, b);
 			        if(i==13&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, aa*2, b, aa, b);
-				 }else if(PuzzleBlack.a2==6){ 
-			        //ÇUï™äÑ
+				 }else if(PuzzleBlack.a2==6){
 			        a = h/3;
 			        aa = (int)a;
 			        b = w/2;
@@ -308,8 +278,7 @@ public class PuzzleBlackView extends View {
 			        p = Bitmap.createBitmap(image1, 0, aa*2, b, aa);
 			        if(i==19&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, b, aa*2, b, aa);
-				 }else if(PuzzleBlack.a2==7){  
-			        //ÇVï™äÑ
+				 }else if(PuzzleBlack.a2==7){ 
 			        a = w/4;
 			        aa = (int)a;
 			        b = h/2;
@@ -328,7 +297,6 @@ public class PuzzleBlackView extends View {
 			        if(i==26&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, aa*3, b, aa, b);
 				 }else if(PuzzleBlack.a2==8){  
-			        //ÇWï™äÑ
 			        a = h/4;
 			        aa = (int)a;
 			        b = w/2;
@@ -348,8 +316,7 @@ public class PuzzleBlackView extends View {
 			        p = Bitmap.createBitmap(image1, 0, aa*3, b, aa);
 			        if(i==34&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, b, aa*3, b, aa);
-				 }else if(PuzzleBlack.a2==9){   
-			        //ÇXï™äÑ
+				 }else if(PuzzleBlack.a2==9){ 
 			        a = w/3;
 			        aa = (int)a;
 			        b = h/3;
@@ -371,8 +338,7 @@ public class PuzzleBlackView extends View {
 			        p = Bitmap.createBitmap(image1, aa, b*2, aa, b);
 			        if(i==43&&br[i]==1)
 			        p = Bitmap.createBitmap(image1, aa*2, b*2, aa, b);
-				 }else if(PuzzleBlack.a2==10){   
-			        //ÇPÇOï™äÑ
+				 }else if(PuzzleBlack.a2==10){ 
 			        a = h/5;
 			        aa = (int)a;
 			        b = w/2;
@@ -408,10 +374,10 @@ public class PuzzleBlackView extends View {
 		 out.flush();
 		 out.close();
 		 } catch(Exception e) {
-		 Toast.makeText(_context, "ó·äOî≠ê∂", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "Problem occurred", Toast.LENGTH_SHORT).show();
 		 }
 		 }
-		 if(a2==a3){//Toast.makeText(_context, "ï€ë∂Ç≥ÇÍÇ‹ÇµÇΩÅB", Toast.LENGTH_SHORT).show();
+		 if(a2==a3){
 		 a3=0;
 		 }
 		 }
@@ -421,9 +387,7 @@ public class PuzzleBlackView extends View {
 		if(e.getAction() == MotionEvent.ACTION_DOWN) {
 			x = e.getX();
 			y = e.getY();
-			
-			//Toast.makeText(_context, "x:"+x+" y:"+y, Toast.LENGTH_SHORT).show();
-			
+
 			if(PuzzleBlack.a2==2){
 				image2 = Bitmap.createScaledBitmap(image1, w2, h2/2, false);
 				if(y<h2/2&&br[0]!=1){

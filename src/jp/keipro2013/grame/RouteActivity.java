@@ -36,9 +36,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
 public class RouteActivity extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback {
-	static double latitude, lat; //緯度
-	static double longtude, lon; //軽度
-	//CameraOverlay overlay;
+	static double latitude, lat;
+	static double longtude, lon;
 	Camera camera;
 	private ImageButton imageButton,imageButton2,imageButton3;
 	int w,h;
@@ -53,11 +52,8 @@ public class RouteActivity extends Activity implements LocationListener, View.On
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(new RouteView(this));
         
-        // WindowManager取得
      	WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-     	// Displayインスタンス生成
      	Display dp = wm.getDefaultDisplay();
-     	// ディスプレイサイズ取得
      	w = dp.getWidth();
      	h = dp.getHeight();
         
@@ -77,19 +73,15 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 		imageButton3.setImageBitmap(image);
 		imageButton3.setOnClickListener(this);
 
-        //if(RoutePreview.d!=1){
         	new AlertDialog.Builder(this)
         	    	.setCancelable(false)    	
         	    	.setMessage("メッセージに辿り着くためのルートを作成するために写真を撮ります。")    	
         	    	.setPositiveButton("はい",null)    	
         	    	.show();
-        //}
         LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
 		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-		// PowerRequirementを指定(低消費電力)
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
-		// ロケーションプロバイダの取得
 		String provider = mLocationManager.getBestProvider(criteria, true);
 		mLocationManager.requestLocationUpdates(provider, 0, 0, this);
 		
@@ -102,36 +94,26 @@ public class RouteActivity extends Activity implements LocationListener, View.On
     }
     
     public void onLocationChanged(Location location) {
-		// 緯度の表示
-		// TextView tv_lat = (TextView) findViewById(R.id.textView1);
-		// tv_lat.setText("緯度:"+location.getLatitude());
 		latitude = location.getLatitude();
-		// 経度の表示
-		// TextView tv_lng = (TextView) findViewById(R.id.textView3);
-		// tv_lng.setText("経度:"+location.getLongitude());
 		longtude = location.getLongitude();
 	}
 
 	@Override
 	public void onProviderDisabled(String arg0) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
-		// TODO Auto-generated method stub
 		
 	}
 	
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if (v == imageButton){
 			Intent intent1 = new Intent(RouteActivity.this, SakuseiMenu.class);
 			try {
@@ -152,12 +134,7 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
-							/*Intent intent1 = new Intent(RouteActivity.this, PackageBOX.class);
-							try {
-								startActivity(intent1);
-							} catch (Exception e) {
-
-							}*/
+							
 						}
 			});
 			alertDialogBuilder.setNeutralButton("いいえ",
@@ -177,7 +154,6 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 	public void onPictureTaken(byte[] data,Camera camera) {
         try {
         	String path=Environment.getExternalStorageDirectory() + "/drawbm/route.jpg";
-            //String path=Environment.getExternalStorageDirectory().getPath() + "/drawbm/test.jpg";
             data2file(data,path);
             System.out.println("");
         } catch (Exception e) {
@@ -202,7 +178,7 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 	
 	public void Intentto(){
     	Intent intent = new Intent();
-    	intent.setClassName("com.example.graffitimessage", "com.example.graffitimessage.RoutePreview");
+    	intent.setClassName("jp.keipro2013.grame", "jp.keipro2013.grame.RoutePreview");
     	startActivity(intent);
     	}
 
@@ -211,31 +187,16 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 	public void surfaceChanged(SurfaceHolder holder,int format,int w,int h) {
     	if(camera != null) {
             camera.stopPreview();
- 
-            // 縦画面対応
+
             camera.setDisplayOrientation(90);
- 
-            // カメラの場合、縦横が逆なので入れ替え
+            
             int temp = w;
             w = h;
             h = temp;
-            //int prevWidth = 100, prevHeight = 200, picWidth = 400, picHeight = 800;
             Camera.Parameters params = camera.getParameters();
  
-            //フラッシュ
             params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
-            
-            // プレビューサイズの確定
-            //params.setPreviewFormat(format);
-            //params.setPreviewSize(prevWidth, prevHeight);
-            //params.setPreviewSize(w,h);
- 
-            // 写真サイズの確定
-            //params.setPictureFormat(format);
-            //params.setPictureSize(picWidth, picHeight);
-            //params.setPictureSize(720,1280);
- 
-            // jpg保存時の回転状態指定
+
             params.setRotation(90);
  
             camera.setParameters(params);
@@ -265,8 +226,6 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
-				// ダイアログ表示など特定の処理を行いたい場合はここに記述
-				// 親クラスのdispatchKeyEvent()を呼び出さずにtrueを返す
 				return true;
 			}
 		}

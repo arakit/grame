@@ -30,18 +30,14 @@ public class Title extends Activity implements View.OnClickListener {
 		super.onCreate(icicle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// WindowManager取得
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// Displayインスタンス生成
 		Display dp = wm.getDefaultDisplay();
-		// ディスプレイサイズ取得
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
 		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.tsukuru);
 		image = Bitmap.createScaledBitmap(image, w/3, h/9, false);
 
-		// レイアウトの生成
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 		layout.setBackgroundColor(Color.rgb(0, 0, 0));
 		
@@ -56,7 +52,6 @@ public class Title extends Activity implements View.OnClickListener {
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		// setLLParams(imageButton);
 		images = new ImageView(this);
 		layout.addView(images, new AbsoluteLayout.LayoutParams(w+1, h+1, -1, -1));
 		layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w/3 , h/10, w/9, h/4*3));
@@ -65,7 +60,6 @@ public class Title extends Activity implements View.OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if (v == imageButton){
 			Intent intent1 = new Intent(Title.this, PackageBOX.class);
 			try {
@@ -74,9 +68,6 @@ public class Title extends Activity implements View.OnClickListener {
 
 			}
 		}else if (v == imageButton2){
-			/*Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.grame2);
-			image = Bitmap.createScaledBitmap(image, w+2, h+2, false);
-			images.setImageBitmap(image);*/
 			Intent intent1 = new Intent(Title.this, MainActivity.class);
 			try {
 				startActivity(intent1);

@@ -27,7 +27,6 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-//イメージの描画
 public class PuzzleBlack extends Activity implements View.OnClickListener {
 
 	PuzzleBlackView imageview;
@@ -43,7 +42,6 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 
 	int hozon = 0;
 
-	// アクティビティ起動時に呼ばれる
 	@SuppressWarnings("deprecation")
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -52,11 +50,8 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 		imageview = new PuzzleBlackView(this);
 		setContentView(imageview);
 		
-		// WindowManager取得
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// Displayインスタンス生成
 		Display dp = wm.getDefaultDisplay();
-		// ディスプレイサイズ取得
 		w = dp.getWidth();
 		h = dp.getHeight();
 
@@ -71,7 +66,6 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 	    
 	    RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
 	     
-	    // マージンを指定（左、上、右、下）
 	    param.setMargins(5, 5, 15, 0);
 	    param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
 	    param.addRule(RelativeLayout.CENTER_HORIZONTAL, 2);
@@ -89,7 +83,6 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 	}
 
 	public void onClick(View v) {
-		// TODO Auto-generated method stub
 		if (v == Button){
 			if(a2==2){
 				s = 0;
@@ -119,8 +112,6 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 				s = 44;
 				g = 54;
 			}
-			
-			//imageview.saveToFile(a2, s, g);
 			
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 

@@ -36,11 +36,9 @@ public class Preview extends Activity implements View.OnClickListener {
 		super.onCreate(icicle);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		// WindowManager取得
 		WindowManager wm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-		// Displayインスタンス生成
+
 		Display dp = wm.getDefaultDisplay();
-		// ディスプレイサイズ取得
 		int w = dp.getWidth();
 		int h = dp.getHeight();
 		
@@ -56,10 +54,8 @@ public class Preview extends Activity implements View.OnClickListener {
 
 		image1 = Bitmap.createBitmap(image1, 0, 0, sw, sh, mat, true);
 		image1 = Bitmap.createScaledBitmap(image1, w, h, false);
-		// レイアウトの生成
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 		layout.setBackgroundColor(Color.rgb(0, 0, 0));
-		//layout.setBackgroundResource(R.drawable.grame);
 		setContentView(layout);
 		
 		imageButton = new ImageButton(this);		
@@ -84,45 +80,15 @@ public class Preview extends Activity implements View.OnClickListener {
 		image = Bitmap.createScaledBitmap(image, w, h, false);
 		images = new ImageView(this);
 		images.setImageBitmap(image);
-		//imageButton4.setImageBitmap(image);
-		// setLLParams(imageButton);
-		
-		/*RelativeLayout relativeLayout = new RelativeLayout(this);
-	    
-	    RelativeLayout.LayoutParams param = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	    RelativeLayout.LayoutParams param2 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	    RelativeLayout.LayoutParams param3 = new RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-	     
-	    // マージンを指定（左、上、右、下）
-	    param.setMargins(0, 0, 0, 0);
-	    param2.setMargins(5, 5, 15, 0);
-	    param3.setMargins(5, 5, 15, 0);
-	    param.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param2.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param3.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM, 1);
-	    param.addRule(RelativeLayout.ALIGN_PARENT_LEFT, 2);
-	    param2.addRule(RelativeLayout.CENTER_HORIZONTAL, 2);
-	    param3.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, 2);
-	    relativeLayout.addView(imageButton, param);
-	    relativeLayout.addView(imageButton2, param2);
-	    relativeLayout.addView(imageButton3, param3);*/
-	    
-	    //addContentView(relativeLayout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
-	    //layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w / 3, h/10, 0, h-h/10));
-		//layout.addView(imageButton2, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3, h-h/10));
-		//layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3*2, h-h/10));
+
 		layout.addView(images, new AbsoluteLayout.LayoutParams(w, h, 0, 0));// );
 		layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w / 3, h/10, 0, h - h/10 -50));
 		layout.addView(imageButton2, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3, h - h/10 -50));
 		layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3*2, h - h/10 -50));
-		//layout.addView(imageButton, new AbsoluteLayout.LayoutParams(dp_w / 2, 100, dp_w/4, dp_h - 250));
-		//layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(dp_w / 2, 100, 0, dp_h - 250));
-		//Toast.makeText(this, ""+CameraEx.latitude+" "+CameraEx.longtude, Toast.LENGTH_LONG).show();
 	}
 
 	@Override
 	public void onClick(View arg0) {
-		// TODO Auto-generated method stub
 		if (arg0 == imageButton2){
 			d=1;
 			drawdialog();
@@ -144,12 +110,7 @@ public class Preview extends Activity implements View.OnClickListener {
 		alertDialogBuilder.setPositiveButton("いいえ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                    	/*Intent intent1 = new Intent(Preview.this, CameraEx.class);
-            			try {
-            				startActivity(intent1);
-            			} catch (Exception e) {
 
-            			}*/
                     }
                 });
 		alertDialogBuilder.setNegativeButton("はい",
@@ -177,8 +138,7 @@ public class Preview extends Activity implements View.OnClickListener {
 		if (event.getAction() == KeyEvent.ACTION_DOWN) {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
-				// ダイアログ表示など特定の処理を行いたい場合はここに記述
-				// 親クラスのdispatchKeyEvent()を呼び出さずにtrueを返す
+
 				return true;
 			}
 		}

@@ -12,6 +12,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileOutputStream;
 
 public class CameraView extends SurfaceView implements SurfaceHolder.Callback,Camera.PictureCallback {
@@ -39,31 +40,17 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,Ca
 	public void surfaceChanged(SurfaceHolder holder,int format,int w,int h) {
     	if(camera != null) {
             camera.stopPreview();
- 
-            // 縦画面対応
+            
             camera.setDisplayOrientation(90);
- 
-            // カメラの場合、縦横が逆なので入れ替え
+
             int temp = w;
             w = h;
             h = temp;
-            //int prevWidth = 100, prevHeight = 200, picWidth = 400, picHeight = 800;
-            Camera.Parameters params = camera.getParameters();
- 
-            //フラッシュ
-            params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
             
-            // プレビューサイズの確定
-            //params.setPreviewFormat(format);
-            //params.setPreviewSize(prevWidth, prevHeight);
-            //params.setPreviewSize(w,h);
- 
-            // 写真サイズの確定
-            //params.setPictureFormat(format);
-            //params.setPictureSize(picWidth, picHeight);
-            //params.setPictureSize(720,1280);
- 
-            // jpg保存時の回転状態指定
+            Camera.Parameters params = camera.getParameters();
+
+            params.setFlashMode(Camera.Parameters.FLASH_MODE_AUTO);
+
             params.setRotation(90);
  
             camera.setParameters(params);
@@ -77,20 +64,21 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,Ca
         camera.release();
         camera=null;
     }
-    
-    /*@Override
-    public boolean onTouchEvent(MotionEvent event) {
-        if (event.getAction()==MotionEvent.ACTION_DOWN) {
-            camera.takePicture(null,null,this);
-            a=1;
-        }
-        return true;
-    }*/
 
     public void onPictureTaken(byte[] data,Camera camera) {
+
+		
+		File file = new File(Environment.getExternalStorageDirectory() + "/drawbm/");
+		try {
+			if (!file.exists()) {
+				file.mkdir();
+			}
+		}catch (SecurityException e) {
+			}
+		
         try {
-        	String path=Environment.getExternalStorageDirectory() + "/drawbm/test.jpg";
-            //String path=Environment.getExternalStorageDirectory().getPath() + "/drawbm/test.jpg";
+        	String path=file.getAbsolutePath();
+        	path += "/" + "test.jpg";
             data2file(data,path);
             System.out.println("");
         } catch (Exception e) {
@@ -116,7 +104,7 @@ public class CameraView extends SurfaceView implements SurfaceHolder.Callback,Ca
     
     public void drawdialog(){
     	Intent intent = new Intent();
-    	intent.setClassName("com.example.graffitimessage", "com.example.graffitimessage.Preview");
+    	intent.setClassName("jp.keipro2013.grame", "jp.keipro2013.grame.Preview");
     	getContext().startActivity(intent);
     	}
 

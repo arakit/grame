@@ -16,9 +16,8 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Toast;
 
-//イメージの描画
 public class PuzzleView extends View {
-    private Bitmap image;//イメージ
+    private Bitmap image;
 	private Bitmap bmp,bmp2;
     Bitmap p;
     int abc = 0;
@@ -30,7 +29,6 @@ public class PuzzleView extends View {
     private Canvas bmpCanvas;
     static Paint paint,paint2,paint3,paint4,paint5,paint6,paint7,paint8;
     private Activity _context;
-    //コンストラクタ
     public PuzzleView(Context context) {
         super(context);
         
@@ -38,8 +36,6 @@ public class PuzzleView extends View {
         
         paint = new Paint();
         paint.setColor(Color.RED);
-        //paint.setAntiAlias(true);
-        //setBackgroundColor(Color.TRANSPARENT);
         paint.setStrokeWidth(6);
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeCap(Paint.Cap.ROUND);
@@ -93,89 +89,47 @@ public class PuzzleView extends View {
         paint8.setStyle(Paint.Style.STROKE);
         paint8.setStrokeCap(Paint.Cap.ROUND);
         paint8.setStrokeJoin(Paint.Join.ROUND);
-        
-        //bmp = Bitmap.createBitmap(1196, 720, Bitmap.Config.ARGB_8888);
-        
-        //bmpCanvas.drawColor(Color.TRANSPARENT);
-        
-        //ギャラリーの画像読み込み
         image = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/drawbm/test2.jpg");
         
         w = image.getWidth();
         h = image.getHeight();
         bmp = Bitmap.createBitmap(720, 1200, Bitmap.Config.ARGB_8888);
         Resources res = this.getContext().getResources();
-        //bmp2 = BitmapFactory.decodeResource(res, R.drawable.ottsu);
         bmpCanvas = new Canvas(bmp);
 
     }
     
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
     	 super.onSizeChanged(w,h,oldw,oldh);
-    	 //bmp = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
-    	 //bmpCanvas = new Canvas(bmp);
     	 
     	 image = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory() + "/drawbm/test2.jpg");
          
-    	/*int deg = 90;
- 		Matrix mat = new Matrix();
- 		mat.postRotate( deg );
- 		int sw = image.getWidth();
- 		int sh = image.getHeight();*/
-
- 		//image = Bitmap.createBitmap(image, 0, 0, sw, sh, mat, true);
- 		
- 		//image = Bitmap.createScaledBitmap(image, 720, 1200, false);
-    	 
          width = image.getWidth();
          height = image.getHeight();
     	 
     	 bmpCanvas.drawBitmap(image, 0, 0, null);
     	 bmpCanvas.drawBitmap(bmp, 0, 0, null);
-    		 		 
-    	 //bmpCanvas.drawColor(Color.TRANSPARENT);
     	 }
 
-    //描画時に呼ばれる
 	@Override 
     public void onDraw(Canvas canvas) {
 		canvas.drawBitmap(bmp,0,0,null);
 		
 		if(PuzzleActivity.a2 == 0){
-			//Toast.makeText(_context, "分割する数を選択してください", Toast.LENGTH_LONG).show();
 			PuzzleActivity.a2=1;		
 		}
 			if(PuzzleActivity.a2==2){
-				//paint.setColor(Color.RED);
 				bmpCanvas.drawBitmap(image, 0, 0, null);
 		    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
-				//bmpCanvas.drawLine(width/2, 0, width/2, height, paint);
 				bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
-				/*paint2.setColor(Color.TRANSPARENT);
-				paint3.setColor(Color.TRANSPARENT);
-				paint4.setColor(Color.TRANSPARENT);
-				paint5.setColor(Color.TRANSPARENT);
-				paint6.setColor(Color.TRANSPARENT);
-				paint7.setColor(Color.TRANSPARENT);
-				paint8.setColor(Color.TRANSPARENT);*/
 			}
 			
 				
 				else if(PuzzleActivity.a2==3){
 					bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
-					//bmpCanvas.drawLine(width/3, 0, width/3, height, paint2);
-			 		//bmpCanvas.drawLine(width/3*2, 0, width/3*2, height, paint2);
 			 		bmpCanvas.drawLine(0, height/3, width, height/3, paint8);
 			 		bmpCanvas.drawLine(0, height/3*2, width, height/3*2, paint8);
-			 		/*paint2.setColor(Color.RED);
-					paint.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);
-					paint8.setColor(Color.TRANSPARENT);*/
 				}
 			
 				else if(PuzzleActivity.a2==4){
@@ -184,17 +138,6 @@ public class PuzzleView extends View {
 			    	
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint);
 			    	bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
-
-					/*paint.setColor(Color.RED);
-					paint8.setColor(Color.RED);
-					
-					paint2.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
-					
 				}
 				
 				else if(PuzzleActivity.a2==5){
@@ -205,37 +148,15 @@ public class PuzzleView extends View {
 			 		bmpCanvas.drawLine(width/3, height/2, width/3, height, paint3);
 			 		bmpCanvas.drawLine(width/3*2, height/2, width/3*2, height, paint3);
 			 		bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
-			 		
-			 		/*paint3.setColor(Color.RED);
-					paint8.setColor(Color.RED);	
-					
-					paint.setColor(Color.TRANSPARENT);
-					paint2.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
 				}
 			
 				else if(PuzzleActivity.a2==6){
 					bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 					
-			    	//bmpCanvas.drawLine(width/3, 0, width/3, height, paint2);
-			 		//bmpCanvas.drawLine(width/3*2, 0, width/3*2, height, paint2);
-			    	//bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint2);
 			    	bmpCanvas.drawLine(0, height/3, width, height/3, paint8);
 			    	bmpCanvas.drawLine(0, height/3*2, width, height/3*2, paint8);
-					/*paint2.setColor(Color.RED);
-					paint8.setColor(Color.RED);
-					
-					paint.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
 				}
 				
 				else if(PuzzleActivity.a2==7){
@@ -248,16 +169,6 @@ public class PuzzleView extends View {
 			 		bmpCanvas.drawLine(width/2, height/2, width/2, height, paint4);
 			 		bmpCanvas.drawLine(width/4*3, height/2, width/4*3, height, paint4);
 			 		bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
-			 		
-			 		/*paint4.setColor(Color.RED);	
-					paint8.setColor(Color.RED);
-					
-					paint.setColor(Color.TRANSPARENT);
-					paint2.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
 				}
 			
 				else if(PuzzleActivity.a2==8){
@@ -265,138 +176,36 @@ public class PuzzleView extends View {
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
 					
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint);
-			    	//bmpCanvas.drawLine(width/4, 0, width/4, height, paint7);
-			 		//bmpCanvas.drawLine(width/4*3, 0, width/4*3, height, paint7);
 			    	bmpCanvas.drawLine(0, height/4, width, height/4, paint8);
 			    	bmpCanvas.drawLine(0, height/2, width, height/2, paint8);
 			    	bmpCanvas.drawLine(0, height/4*3, width, height/4*3, paint8);
-			    	
-					/*paint.setColor(Color.RED);
-					paint7.setColor(Color.RED);
-					paint8.setColor(Color.RED);	
-					
-					paint2.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);*/
 				}
 				
 				else if(PuzzleActivity.a2==9){
 					bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
-					
-			 		/*bmpCanvas.drawLine(width/4, 0, width/4, height/2, paint5);
-			 		bmpCanvas.drawLine(width/4*2, 0, width/4*2, height/2, paint5);
-			 		bmpCanvas.drawLine(width/4*3, 0, width/4*3, height/2, paint5);
-			 		bmpCanvas.drawLine(width/5, height/2, width/5, height, paint5);
-			 		bmpCanvas.drawLine(width/5*2, height/2, width/5*2, height, paint5);
-			 		bmpCanvas.drawLine(width/5*3, height/2, width/5*3, height, paint5);
-			 		bmpCanvas.drawLine(width/5*4, height/2, width/5*4, height, paint5);
-			    	bmpCanvas.drawLine(0, height/2, width, height/2, paint8);*/
+
 			    	bmpCanvas.drawLine(width/3, 0, width/3, height, paint5);
 			    	bmpCanvas.drawLine(width/3*2, 0, width/3*2, height, paint5);
 			 		bmpCanvas.drawLine(0, height/3, width, height/3, paint5);
 			 		bmpCanvas.drawLine(0, height/3*2, width, height/3*2, paint5);
-					/*paint5.setColor(Color.RED);
-					paint8.setColor(Color.RED);
-					
-					paint.setColor(Color.TRANSPARENT);
-					paint2.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint6.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
 				}
 								
 				else if(PuzzleActivity.a2==10){
 					bmpCanvas.drawBitmap(image, 0, 0, null);
 			    	bmpCanvas.drawBitmap(bmp, 0, 0, null);
-					
-			    	/*bmpCanvas.drawLine(width/5, 0, width/5, height, paint6);
-			 		bmpCanvas.drawLine(width/5*2, 0, width/5*2, height, paint6);
-			 		bmpCanvas.drawLine(width/5*3, 0, width/5*3, height, paint6);
-			 		bmpCanvas.drawLine(width/5*4, 0, width/5*4, height, paint6);
-			    	bmpCanvas.drawLine(0, height/2, width, height/2, paint8);*/
 			    	bmpCanvas.drawLine(width/2, 0, width/2, height, paint6);
 			    	bmpCanvas.drawLine(0, height/5, width, height/5, paint8);
 			    	bmpCanvas.drawLine(0, height/5*2, width, height/5*2, paint8);
 			    	bmpCanvas.drawLine(0, height/5*3, width, height/5*3, paint8);
 			    	bmpCanvas.drawLine(0, height/5*4, width, height/5*4, paint8);
-					/*paint6.setColor(Color.RED);
-					paint8.setColor(Color.RED);
-					
-					paint.setColor(Color.TRANSPARENT);
-					paint2.setColor(Color.TRANSPARENT);
-					paint3.setColor(Color.TRANSPARENT);
-					paint4.setColor(Color.TRANSPARENT);
-					paint5.setColor(Color.TRANSPARENT);
-					paint7.setColor(Color.TRANSPARENT);*/
 				}				
-		
-        //canvas.drawBitmap(image,0,0,null);
 			invalidate();
     }
 	
-	/*public void DrawLine(int a2) {
-		bmpCanvas.drawBitmap(image,0,0,null);
-		
-		if(a2==2||a2==4||a2==8)
-		bmpCanvas.drawLine(w/2, 0, w/2, h, paint);
-		
-		else if(a2==3||a2==6){
-			bmpCanvas.drawLine(w/3, 0, w/3, h, paint);
-			bmpCanvas.drawLine(w/3*2, 0, w/3*2, h, paint);
-		}
-		
-		else if(a2==5){
-			bmpCanvas.drawLine(w/2, 0, w/2, h/2, paint);
-			bmpCanvas.drawLine(w/3, h/2, w/3, h, paint);
-			bmpCanvas.drawLine(w/3*2, h/2, w/3*2, h, paint);
-		}
-		
-		else if(a2==7){
-			bmpCanvas.drawLine(w/3, 0, w/3, h/2, paint);
-			bmpCanvas.drawLine(w/3*2, 0, w/3*2, h/2, paint);
-			bmpCanvas.drawLine(w/4, h/2, w/4, h, paint);
-			bmpCanvas.drawLine(w/2, h/2, w/2, h, paint);
-			bmpCanvas.drawLine(w/4*3, h/2, w/4*3, h, paint);
-		}
-		
-		else if(a2==9){
-			bmpCanvas.drawLine(w/4, 0, w/4, h/2, paint);
-			bmpCanvas.drawLine(w/4*2, 0, w/4*2, h/2, paint);
-			bmpCanvas.drawLine(w/4*3, 0, w/4*3, h/2, paint);
-			bmpCanvas.drawLine(w/5, h/2, w/5, h, paint);
-			bmpCanvas.drawLine(w/5*2, h/2, w/5*2, h, paint);
-			bmpCanvas.drawLine(w/5*3, h/2, w/5*3, h, paint);
-			bmpCanvas.drawLine(w/5*4, h/2, w/5*4, h, paint);
-		}
-		
-		else if(a2==10){
-			bmpCanvas.drawLine(w/5, 0, w/5, h, paint);
-			bmpCanvas.drawLine(w/5*2, 0, w/5*2, h, paint);
-			bmpCanvas.drawLine(w/5*3, 0, w/5*3, h, paint);
-			bmpCanvas.drawLine(w/5*4, 0, w/5*4, h, paint);
-		}
-		
-		if(a2==8){
-			bmpCanvas.drawLine(w/4, 0, w/4, h, paint);
-			bmpCanvas.drawLine(w/4*3, 0, w/4*3, h, paint);
-		}
-		
-		if(a2>3)
-		bmpCanvas.drawLine(0, h/2, w, h/2, paint);
-		
-		if(a2==99)
-			bmpCanvas.drawBitmap(bmp2,-100,-100,null);			
-		
-		//Toast.makeText(_context, +a2+"分割", Toast.LENGTH_SHORT).show();
-	}*/
-	
 	public void saveToFile(int a2, int s, int g){
 		 if(!sdcardWriteReady()){
-		 Toast.makeText(_context, "SDcardが認識されません。", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "Please insert SDcard。", Toast.LENGTH_SHORT).show();
 		 return;
 		 }
 		 
@@ -409,7 +218,7 @@ public class PuzzleView extends View {
 		 }
 			 
 		 }catch(SecurityException e){
-			 Toast.makeText(_context, "例外発生", Toast.LENGTH_SHORT).show();
+			 Toast.makeText(_context, "Problem occurred", Toast.LENGTH_SHORT).show();
 		 }
 		 for(int i=s; i<g; i++){
 			 
@@ -579,9 +388,9 @@ public class PuzzleView extends View {
 		 out.flush();
 		 out.close();
 		 } catch(Exception e) {
-		 Toast.makeText(_context, "例外発生", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "Problem occurred", Toast.LENGTH_SHORT).show();
 		 }
-		 if(a2==a3){//Toast.makeText(_context, "保存されました。", Toast.LENGTH_SHORT).show();
+		 if(a2==a3){
 		 a3=0;
 		 }
 		 }

@@ -20,7 +20,6 @@ public class CameraOverlay extends View {
   }
    
   protected void onSizeChanged(int w, int h, int oldw, int oldh){
-    //ビューのサイズを取得
     width= w;
    height= h;
   }
@@ -29,6 +28,5 @@ public class CameraOverlay extends View {
   protected void onDraw(Canvas canvas) {
     super.onDraw(canvas);
     canvas.drawColor(Color.TRANSPARENT);
-    //canvas.drawBitmap(icon, width/2-66,height-150, null);
   }
 }
