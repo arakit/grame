@@ -63,7 +63,7 @@ public class DrawBm extends Activity implements OnClickListener, OnItemClickList
 		this.setContentView(R.layout.drawbm);
 		new AlertDialog.Builder(this)
     	.setCancelable(false)    	
-    	.setMessage("メッセージ作成するためにラクガキを行ってください。")    	
+    	.setMessage("メッセージを作成するためにラクガキを行ってください。")    	
     	.setPositiveButton("はい",null)    	
     	.show();
 

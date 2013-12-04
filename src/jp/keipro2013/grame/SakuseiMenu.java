@@ -48,7 +48,7 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
 		imageButton2.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.pouse);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.pause);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		imageButton3 = new ImageButton(this);
 		imageButton3.setImageBitmap(image);
@@ -82,8 +82,8 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 			}
 		}else if (v == imageButton3){
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setMessage("•Û‘¶‚µ‚Ü‚µ‚½B\nƒpƒbƒP[ƒWBOX‰æ–Ê‚É–ß‚è‚Ü‚·‚©H");
-			alertDialogBuilder.setNegativeButton("‚Í‚¢",
+			alertDialogBuilder.setMessage("ä¿å­˜ã—ã¾ã—ãŸã€‚\nãƒ‘ãƒƒã‚±ãƒ¼ã‚¸BOXç”»é¢ã«æˆ»ã‚Šã¾ã™ã‹ï¼Ÿ");
+			alertDialogBuilder.setNegativeButton("ã¯ã„",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
@@ -95,7 +95,7 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 							}
 						}
 			});
-			alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+			alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,
 						int which) {
@@ -107,8 +107,8 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 			alertDialog.show();
 		}else if (v == imageButton4){
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setMessage("ƒpƒbƒP[ƒWì¬‚ğŠ®—¹‚µ‚Ü‚·‚©H");
-			alertDialogBuilder.setNegativeButton("‚Í‚¢",
+			alertDialogBuilder.setMessage("ãƒ‘ãƒƒã‚±ãƒ¼ã‚¸ä½œæˆã‚’å®Œäº†ã—ã¾ã™ã‹ï¼Ÿ");
+			alertDialogBuilder.setNegativeButton("ã¯ã„",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
@@ -120,7 +120,7 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 							}
 						}
 			});
-			alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+			alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,
 						int which) {

@@ -1,6 +1,8 @@
 package jp.keipro2013.grame;
 
 import java.io.FileOutputStream;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -10,6 +12,10 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.hardware.Camera.PictureCallback;
 import android.location.Criteria;
 import android.location.Location;
@@ -35,9 +41,16 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
-public class RouteActivity extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback {
+public class RouteActivity extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback,SensorEventListener{
 	static double latitude, lat;
 	static double longtude, lon;
+	static double altitude,alt;
+	private SensorManager sensorManager;
+	private Sensor accelerometer;
+	private Sensor orientation;
+	static float d,p,r,x,y,z;
+	static float gx, gy, gz = 0;
+	static float direct, pitch, roll = 0;
 	Camera camera;
 	private ImageButton imageButton,imageButton2,imageButton3;
 	int w,h;
@@ -75,8 +88,8 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 
         	new AlertDialog.Builder(this)
         	    	.setCancelable(false)    	
-        	    	.setMessage("ƒƒbƒZ[ƒW‚É’H‚è’…‚­‚½‚ß‚Ìƒ‹[ƒg‚ğì¬‚·‚é‚½‚ß‚ÉÊ^‚ğB‚è‚Ü‚·B")    	
-        	    	.setPositiveButton("‚Í‚¢",null)    	
+        	    	.setMessage("ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã«è¾¿ã‚Šç€ããŸã‚ã®ãƒ«ãƒ¼ãƒˆã‚’ä½œæˆã™ã‚‹ãŸã‚ã«å†™çœŸã‚’æ’®ã‚Šã¾ã™ã€‚")    	
+        	    	.setPositiveButton("ã¯ã„",null)    	
         	    	.show();
         LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
@@ -90,12 +103,19 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 	    layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w/3, h/10, 0, h-h/10));
 		layout.addView(imageButton2, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3, h-h/10));
 		layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3*2, h-h/10));
-	    
+		
+		sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
+		List<Sensor> list;
+	    list=sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+	    if (list.size()>0) accelerometer = list.get(0);
+	    list=sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+	    if (list.size()>0) orientation = list.get(0);
     }
     
     public void onLocationChanged(Location location) {
 		latitude = location.getLatitude();
 		longtude = location.getLongitude();
+		altitude = location.getAltitude();
 	}
 
 	@Override
@@ -124,20 +144,27 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 		}else if (v == imageButton2){
 			lat = latitude;
 			lon = longtude;
+			alt = altitude;
+			d = direct;
+			p = pitch;
+			r = roll;
+			x = gx;
+			y = gy;
+			z = gz;
 			
 			RouteView.camera.takePicture(null,null,this);
 			RouteView.a=1;
 		}else if (v == imageButton3){
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setMessage("ƒ‹[ƒg‚Ì‡”Ô‚ğŒˆ‚ß‚Ü‚·‚©H");
-			alertDialogBuilder.setNegativeButton("‚Í‚¢",
+			alertDialogBuilder.setMessage("ãƒ«ãƒ¼ãƒˆã®é †ç•ªã‚’æ±ºã‚ã¾ã™ã‹ï¼Ÿ");
+			alertDialogBuilder.setNegativeButton("ã¯ã„",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
 							
 						}
 			});
-			alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+			alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,
 						int which) {
@@ -230,5 +257,41 @@ public class RouteActivity extends Activity implements LocationListener, View.On
 			}
 		}
 		return super.dispatchKeyEvent(event);
+	}
+	
+	protected void onResume(){
+	      super.onResume();
+
+	      if (accelerometer!=null)
+	    	  sensorManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
+	      if (orientation!=null)
+	    	  sensorManager.registerListener(this,orientation,SensorManager.SENSOR_DELAY_FASTEST);
+	   }
+
+	   protected void onStop(){
+	      sensorManager.unregisterListener(this);
+	 
+	      super.onStop();
+	   }
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		// TODO Auto-generated method stub
+		if (event.sensor==accelerometer){
+	    	  gx = -event.values[0];
+	    	  gy = event.values[1];
+	    	  gz = event.values[2];
+	      }
+	   if (event.sensor==orientation){
+	    	  direct = event.values[0];
+	    	  pitch = -event.values[1];
+	    	  roll = -event.values[2];
+	      }
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -106,14 +106,15 @@ public class Preview extends Activity implements View.OnClickListener {
 	
 	public void drawdialog(){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		alertDialogBuilder.setMessage("‚±‚ÌÊ^‚ğ•Û‘¶‚µ‚Ü‚·‚©H");        
-		alertDialogBuilder.setPositiveButton("‚¢‚¢‚¦",
+		alertDialogBuilder.setMessage("ã“ã®å†™çœŸã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ");
+		//alertDialogBuilder.setMessage("latitude:"+CameraEx.lat+"\nlongtitude:"+CameraEx.lon+"\naltitude:"+CameraEx.alt+"\ndirect:"+CameraEx.d+"\npitch:"+CameraEx.p+"\nroll:"+CameraEx.r+"\ngx:"+CameraEx.x+"\ngy:"+CameraEx.y+"\ngz:"+CameraEx.z);
+		alertDialogBuilder.setPositiveButton("ã„ã„ãˆ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                     }
                 });
-		alertDialogBuilder.setNegativeButton("‚Í‚¢",
+		alertDialogBuilder.setNegativeButton("ã¯ã„",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     	try {

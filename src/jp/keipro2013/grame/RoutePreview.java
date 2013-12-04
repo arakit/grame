@@ -95,14 +95,15 @@ public class RoutePreview extends Activity implements View.OnClickListener {
 	}
 	
 	public void drawdialog(){AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		alertDialogBuilder.setMessage("‚±‚ÌÊ^‚ğ•Û‘¶‚µ‚Ü‚·‚©H");        
-		alertDialogBuilder.setPositiveButton("‚¢‚¢‚¦",
+	alertDialogBuilder.setMessage("ã“ã®å†™çœŸã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ");
+	//alertDialogBuilder.setMessage("latitude:"+RouteActivity.lat+"\nlongtitude:"+RouteActivity.lon+"\naltitude:"+RouteActivity.alt+"\ndirect:"+RouteActivity.d+"\npitch:"+RouteActivity.p+"\nroll:"+RouteActivity.r+"\ngx:"+RouteActivity.x+"\ngy:"+RouteActivity.y+"\ngz:"+RouteActivity.z);
+		alertDialogBuilder.setPositiveButton("ã„ã„ãˆ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     	
                     }
                 });
-		alertDialogBuilder.setNegativeButton("‚Í‚¢",
+		alertDialogBuilder.setNegativeButton("ã¯ã„",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     	try {

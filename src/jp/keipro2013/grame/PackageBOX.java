@@ -117,15 +117,15 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 			}
 		}else if (v == imageButton4){
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setMessage("–{“–‚Éíœ‚µ‚Ü‚·‚©H");
-			alertDialogBuilder.setNegativeButton("‚Í‚¢",
+			alertDialogBuilder.setMessage("æœ¬å½“ã«å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿ");
+			alertDialogBuilder.setNegativeButton("ã¯ã„",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
 							
 						}
 			});
-			alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+			alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,
 						int which) {
@@ -145,9 +145,9 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 			}else if (v==imageButton6){
 			    final EditText editView = new EditText(PackageBOX.this);
 			    new AlertDialog.Builder(PackageBOX.this)
-			        .setTitle("ƒ^ƒCƒgƒ‹“ü—Í")
+			        .setTitle("ã‚¿ã‚¤ãƒˆãƒ«å…¥åŠ›")
 			        .setView(editView)
-			        .setPositiveButton("ƒLƒƒƒ“ƒZƒ‹", new DialogInterface.OnClickListener() {
+			        .setPositiveButton("ã‚­ãƒ£ãƒ³ã‚»ãƒ«", new DialogInterface.OnClickListener() {
 			            public void onClick(DialogInterface dialog, int whichButton) {
 			                
 			            }
@@ -170,8 +170,8 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 				ImageButton img1 = (ImageButton) layout1.findViewById(R.id.img1);
 				img1.setImageResource(R.drawable.enp);
 
-				ImageButton img2 = (ImageButton) layout1.findViewById(R.id.img2);
-				img2.setImageResource(R.drawable.syusei);
+				//ImageButton img2 = (ImageButton) layout1.findViewById(R.id.img2);
+				//img2.setImageResource(R.drawable.syusei);
 					
 				ImageButton img3 = (ImageButton) layout1.findViewById(R.id.img3);
 				img3.setImageResource(R.drawable.mails);
@@ -182,7 +182,7 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 				new AlertDialog.Builder(this).
 				setView(layout1)
 				.setCancelable(false) 		
-				.setPositiveButton("ƒLƒƒƒ“ƒZƒ‹", new OnClickListener() {
+				.setPositiveButton("ã‚­ãƒ£ãƒ³ã‚»ãƒ«", new OnClickListener() {
 							public void onClick(DialogInterface dialog, int which) {
 							}
 						}).show();
@@ -199,14 +199,14 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 
 			}
 			break;
-		case R.id.img2:
+		/*case R.id.img2:
 			Intent intent2 = new Intent(PackageBOX.this, SyuseiMenu.class);
 			try {
 				startActivity(intent2);
 			} catch (Exception e) {
 
 			}
-			break;
+			break;*/
 		case R.id.img3:
 			Intent intent3 = new Intent(PackageBOX.this, Mail.class);
 			try {
@@ -217,8 +217,8 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 			break;
 		case R.id.img4:
 			AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-			alertDialogBuilder.setMessage("–{“–‚Éíœ‚µ‚Ü‚·‚©H");
-			alertDialogBuilder.setNegativeButton("‚Í‚¢",
+			alertDialogBuilder.setMessage("æœ¬å½“ã«å‰Šé™¤ã—ã¾ã™ã‹ï¼Ÿ");
+			alertDialogBuilder.setNegativeButton("ã¯ã„",
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
@@ -231,7 +231,7 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 							
 						}
 			});
-			alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+			alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 			new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog,
 						int which) {

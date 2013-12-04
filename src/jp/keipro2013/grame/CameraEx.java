@@ -2,6 +2,8 @@ package jp.keipro2013.grame;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.List;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -11,6 +13,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
@@ -35,10 +41,17 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 
-public class CameraEx extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback {
+public class CameraEx extends Activity implements LocationListener, View.OnClickListener,SurfaceHolder.Callback,Camera.PictureCallback, SensorEventListener{
 	static double latitude,lat;
 	static double longtude,lon;
+	static double altitude,alt;
+	private SensorManager sensorManager;
+	private Sensor accelerometer;
+	private Sensor orientation;
 	int w,h;
+	static float d,p,r,x,y,z;
+	static float gx, gy, gz = 0;
+	static float direct, pitch, roll = 0;
 	
 	CameraOverlay overlay;
 	Camera camera;
@@ -75,8 +88,8 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		
         	new AlertDialog.Builder(this)
         	    	.setCancelable(false)    	
-        	    	.setMessage("ÉÅÉbÉZÅ[ÉWçÏê¨Ç∑ÇÈÇΩÇﬂÇÃé ê^éBâeÇçsÇ¢Ç‹Ç∑ÅB")    	
-        	    	.setPositiveButton("ÇÕÇ¢",null)    	
+        	    	.setMessage("„É°„ÉÉ„Çª„Éº„Ç∏‰ΩúÊàê„Åô„Çã„Åü„ÇÅ„ÅÆÂÜôÁúüÊíÆÂΩ±„ÇíË°å„ÅÑ„Åæ„Åô„ÄÇ")    	
+        	    	.setPositiveButton("„ÅØ„ÅÑ",null)    	
         	    	.show();
         	
         LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
@@ -85,18 +98,28 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		criteria.setPowerRequirement(Criteria.POWER_LOW);
 		String provider = mLocationManager.getBestProvider(criteria, true);
 		mLocationManager.requestLocationUpdates(provider, 0, 0, this);
+		//mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        //mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, this);
 
 		AbsoluteLayout layout = new AbsoluteLayout(this);
 	    addContentView(layout, new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT));
 	  
-	    layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w / 3, h/10, 0, h-h/10));
+	    layout.addView(imageButton, new AbsoluteLayout.LayoutParams(w/3, h/10, 0, h-h/10));
 		layout.addView(imageButton2, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3, h-h/10));
 		layout.addView(imageButton3, new AbsoluteLayout.LayoutParams(w/3, h/10, w/3*2, h-h/10));
+		
+		sensorManager=(SensorManager)getSystemService(Context.SENSOR_SERVICE);
+		List<Sensor> list;
+	    list=sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
+	    if (list.size()>0) accelerometer = list.get(0);
+	    list=sensorManager.getSensorList(Sensor.TYPE_ORIENTATION);
+	    if (list.size()>0) orientation = list.get(0);
     }
     
     public void onLocationChanged(Location location) {
 		latitude = location.getLatitude();
 		longtude = location.getLongitude();
+		altitude = location.getAltitude();
 	}
 
 	@Override
@@ -129,6 +152,13 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		}else if (v == imageButton2){
 			lat = latitude;
 			lon = longtude;
+			alt = altitude;
+			d = direct;
+			p = pitch;
+			r = roll;
+			x = gx;
+			y = gy;
+			z = gz;
 			
 			CameraView.camera.takePicture(null,null,this);
 			CameraView.a=1;
@@ -226,6 +256,42 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 			}
 		}
 		return super.dispatchKeyEvent(event);
+	}
+	
+	protected void onResume(){
+	      super.onResume();
+
+	      if (accelerometer!=null)
+	    	  sensorManager.registerListener(this,accelerometer,SensorManager.SENSOR_DELAY_FASTEST);
+	      if (orientation!=null)
+	    	  sensorManager.registerListener(this,orientation,SensorManager.SENSOR_DELAY_FASTEST);
+	   }
+
+	   protected void onStop(){
+	      sensorManager.unregisterListener(this);
+	 
+	      super.onStop();
+	   }
+
+	@Override
+	public void onSensorChanged(SensorEvent event) {
+		// TODO Auto-generated method stub
+		if (event.sensor==accelerometer){
+	    	  gx = -event.values[0];
+	    	  gy = event.values[1];
+	    	  gz = event.values[2];
+	      }
+	   if (event.sensor==orientation){
+	    	  direct = event.values[0];
+	    	  pitch = -event.values[1];
+	    	  roll = -event.values[2];
+	      }
+	}
+
+	@Override
+	public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -65,9 +65,9 @@ public class Mail extends Activity implements View.OnClickListener {
 			//intent.putExtra(Intent.EXTRA_CC, new String[]{"CC"});  
 			//intent.putExtra(Intent.EXTRA_BCC, new String[]{"BCC"});  
 			intent.putExtra(Intent.EXTRA_SUBJECT, "Graffiti Message");  
-			intent.putExtra(Intent.EXTRA_TEXT, "A—lˆ¶‚ÉB‚©‚ç‘f“G‚ÈƒƒbƒZ[ƒW‚ª“Í‚¢‚Ä‚¢‚Ü‚·‚æB\n\n" +
-					"ƒXƒ^[ƒgˆÊ’u:http:\n\n" +
-					"Graffiti Message‚ð‚¨Ž‚¿‚Å‚È‚¢•û‚Í\n" +
+			intent.putExtra(Intent.EXTRA_TEXT, "Aæ§˜å®›ã«Bã‹ã‚‰ç´ æ•µãªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ãŒå±Šã„ã¦ã„ã¾ã™ã‚ˆã€‚\n\n" +
+					"ã‚¹ã‚¿ãƒ¼ãƒˆä½ç½®:http:\n\n" +
+					"Graffiti Messageã‚’ãŠæŒã¡ã§ãªã„æ–¹ã¯\n" +
 					"Android:http\n" +
 					"iPhone:http");  
 			try {

@@ -75,8 +75,8 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 	    
 	    new AlertDialog.Builder(this)
     	.setCancelable(false)    	
-    	.setMessage("“h‚è‚Â‚Ô‚µ‚½‚¢ƒp[ƒc‚ğƒ^ƒbƒv‚µ‚Ä‚­‚¾‚³‚¢B\n‚à‚¤ˆê“xƒ^ƒbƒv‚·‚é‚Æ–ß‚è‚Ü‚·B")    	
-    	.setPositiveButton("‚Í‚¢",null)    	
+    	.setMessage("å¡—ã‚Šã¤ã¶ã—ãŸã„ãƒ‘ãƒ¼ãƒ„ã‚’ã‚¿ãƒƒãƒ—ã—ã¦ãã ã•ã„ã€‚\nã‚‚ã†ä¸€åº¦ã‚¿ãƒƒãƒ—ã™ã‚‹ã¨æˆ»ã‚Šã¾ã™ã€‚")    	
+    	.setPositiveButton("ï¿½Í‚ï¿½",null)    	
     	.show();
 	    
 	    a2=PuzzleActivity.a2;
@@ -115,8 +115,8 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 			
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-				alertDialogBuilder.setMessage("‚±‚ê‚ÅƒpƒYƒ‹‰»‚ğs‚¢‚Ü‚·B");
-				alertDialogBuilder.setNegativeButton("‚Í‚¢",
+				alertDialogBuilder.setMessage("ã“ã‚Œã§ãƒ‘ã‚ºãƒ«åŒ–ã‚’è¡Œã„ã¾ã™ã€‚");
+				alertDialogBuilder.setNegativeButton("ã¯ã„",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
@@ -132,7 +132,7 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 										}
 							}
 						});
-				alertDialogBuilder.setNeutralButton("‚¢‚¢‚¦",
+				alertDialogBuilder.setNeutralButton("ã„ã„ãˆ",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {

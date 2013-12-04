@@ -46,12 +46,12 @@ public class MainActivity extends Activity implements SensorEventListener{
 		CameraUkete cv = new CameraUkete(this);
 
 		//AR
-		ct.addView(vt);
+		//ct.addView(vt);
 		//camera
 		ct.addView(cv);
 		
 		//mirai AR(OverLay)
-		//ct.addView(new OverLay(this), new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT)); 
+		ct.addView(new OverLay(this), new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT)); 
 		
 		//setContentView(ct);
 		
@@ -109,7 +109,9 @@ public class MainActivity extends Activity implements SensorEventListener{
 		      }
 	   }
 
-	   public void onAccuracyChanged(Sensor sensor,int accuracy){}
+	   public void onAccuracyChanged(Sensor sensor,int accuracy){
+		   
+	   }
 	 
 	   public void onDestroy(){
 	      super.onDestroy();

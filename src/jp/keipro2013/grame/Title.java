@@ -35,7 +35,7 @@ public class Title extends Activity implements View.OnClickListener {
 		w = dp.getWidth();
 		h = dp.getHeight();
 		
-		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.tsukuru);
+		Bitmap image = BitmapFactory.decodeResource(getResources(), R.drawable.createt);
 		image = Bitmap.createScaledBitmap(image, w/3, h/9, false);
 
 		AbsoluteLayout layout = new AbsoluteLayout(this);
@@ -47,7 +47,7 @@ public class Title extends Activity implements View.OnClickListener {
 		imageButton = new ImageButton(this);
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.miru);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.view);
 		image = Bitmap.createScaledBitmap(image, w/3, h/9, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);
@@ -83,14 +83,14 @@ public class Title extends Activity implements View.OnClickListener {
 			switch (event.getKeyCode()) {
 			case KeyEvent.KEYCODE_BACK:
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-				alertDialogBuilder.setMessage("Graffiti MessageÇèIóπÇµÇ‹Ç∑Ç©ÅH");        
-				alertDialogBuilder.setPositiveButton("Ç¢Ç¢Ç¶",
+				alertDialogBuilder.setMessage("Graffiti Message„ÇíÁµÇ‰∫Ü„Åó„Åæ„Åô„ÅãÔºü");        
+				alertDialogBuilder.setPositiveButton("„ÅÑ„ÅÑ„Åà",
 		                new DialogInterface.OnClickListener() {
 		                    public void onClick(DialogInterface dialog, int which) {
 		                    	
 		                    }
 		                });
-				alertDialogBuilder.setNegativeButton("ÇÕÇ¢",
+				alertDialogBuilder.setNegativeButton("„ÅØ„ÅÑ",
 		                new DialogInterface.OnClickListener() {
 		                    public void onClick(DialogInterface dialog, int which) {
 		                    	try {

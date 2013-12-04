@@ -83,15 +83,15 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 		if (v == Button2){
 			if (a2 <= 1) {
 				AlertDialog.Builder ad = new AlertDialog.Builder(this);
-				ad.setTitle("ÉGÉâÅ[");
-				ad.setMessage("ÉpÉYÉãâªÇ∑ÇÈêîÇëIëÇµÇƒÇ≠ÇæÇ≥Ç¢ÅB");
+				ad.setTitle("„Ç®„É©„Éº");
+				ad.setMessage("„Éë„Ç∫„É´Âåñ„Åô„ÇãÊï∞„ÇíÈÅ∏Êäû„Åó„Å¶„Åè„Å†„Åï„ÅÑ„ÄÇ");
 				ad.setPositiveButton("OK", null);
 				ad.show();
 			} else if (a2 >= 2) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-				alertDialogBuilder.setMessage("Ç±ÇÍÇ≈ÉpÉYÉãâªÇµÇƒÇ‡Ç¢Ç¢Ç≈Ç∑Ç©ÅH");
-				alertDialogBuilder.setNegativeButton("ÇÕÇ¢",
+				alertDialogBuilder.setMessage("„Åì„Çå„Åß„Éë„Ç∫„É´Âåñ„Åó„Å¶„ÇÇ„ÅÑ„ÅÑ„Åß„Åô„ÅãÔºü");
+				alertDialogBuilder.setNegativeButton("„ÅØ„ÅÑ",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
@@ -130,9 +130,9 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 											PuzzleActivity.this);
 
 									alertDialogBuilder
-											.setMessage("ÉpÅ[ÉcÇìhÇËÇ¬Ç‘ÇµÇ‹Ç∑Ç©ÅH");
+											.setMessage("„Éë„Éº„ÉÑ„ÇíÂ°ó„Çä„Å§„Å∂„Åó„Åæ„Åô„ÅãÔºü");
 									alertDialogBuilder
-											.setNegativeButton(	"ÇÕÇ¢",new DialogInterface.OnClickListener() {
+											.setNegativeButton(	"„ÅØ„ÅÑ",new DialogInterface.OnClickListener() {
 														public void onClick(
 																DialogInterface dialog,
 																int which) {
@@ -144,7 +144,7 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 																}
 															}
 													});
-									alertDialogBuilder.setPositiveButton("Ç¢Ç¢Ç¶",
+									alertDialogBuilder.setPositiveButton("„ÅÑ„ÅÑ„Åà",
 													new DialogInterface.OnClickListener() {
 														public void onClick(
 																DialogInterface dialog,
@@ -166,7 +166,7 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 								}
 							}
 						});
-				alertDialogBuilder.setNeutralButton("Ç¢Ç¢Ç¶",
+				alertDialogBuilder.setNeutralButton("„ÅÑ„ÅÑ„Åà",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
 									int which) {
