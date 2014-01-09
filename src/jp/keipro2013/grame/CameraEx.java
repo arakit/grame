@@ -94,8 +94,8 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
         	
         LocationManager mLocationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
-		criteria.setPowerRequirement(Criteria.POWER_LOW);
+		//criteria.setAccuracy(Criteria.ACCURACY_COARSE);
+		//criteria.setPowerRequirement(Criteria.POWER_LOW);
 		String provider = mLocationManager.getBestProvider(criteria, true);
 		mLocationManager.requestLocationUpdates(provider, 0, 0, this);
 		//mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
