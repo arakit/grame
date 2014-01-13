@@ -30,6 +30,7 @@ class ViewTest extends GLSurfaceView implements Renderer{
 		this.setRenderer(this);
 		this.getHolder().setFormat(PixelFormat.TRANSLUCENT);
 	}
+	
 
 	float cameraX = 0.0f;
 	float cameraZ = 1.0f;
