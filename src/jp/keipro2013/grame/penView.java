@@ -219,8 +219,11 @@ public class penView extends View {
 		}
 		
 		Bitmap newbitmap = Bitmap.createBitmap(bmpBack.getWidth(), bmpBack.getHeight(), Bitmap.Config.ARGB_8888);
+		Bitmap newbitmap2 = Bitmap.createBitmap(1024,1024, Bitmap.Config.ARGB_8888);
 		Canvas saveImage = new Canvas(newbitmap);
+		Canvas saveImage2 = new Canvas(newbitmap2);
 		saveImage.drawBitmap(bmpCanvas, 0, 0, null);
+		saveImage2.drawBitmap(bmpCanvas, 0, 0, null);
 
 		File file = new File(Environment.getExternalStorageDirectory()
 				.getPath() + "/drawbm/");
@@ -236,7 +239,7 @@ public class penView extends View {
 		AttachName += "test" + saveNum + ".png";
 		try {
 			FileOutputStream out = new FileOutputStream(AttachName);
-			newbitmap.compress(CompressFormat.PNG, 100, out);
+			newbitmap2.compress(CompressFormat.PNG, 100, out);
 			out.flush();
 			out.close();
 			if (saveNum != 2){
@@ -249,6 +252,8 @@ public class penView extends View {
 		}
 		saveImage.drawBitmap(bmpBack, 0, 0, null);
 		saveImage.drawBitmap(bmpCanvas, 0, 0, null);
+		//saveImage2.drawBitmap(bmpBack, 0, 0, null);
+		//saveImage2.drawBitmap(bmpCanvas, 0, 0, null);
 		AttachName = file.getAbsolutePath() + "/";
 		AttachName += "test" + saveNum + ".jpg";
 		try {

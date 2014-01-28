@@ -1,18 +1,16 @@
 package jp.keipro2013.grame;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
+import android.os.Bundle;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -20,9 +18,6 @@ import android.view.WindowManager;
 import android.widget.AbsoluteLayout;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class PackageBOX extends Activity implements View.OnClickListener {
 	private ImageButton imageButton,imageButton2,imageButton3,imageButton4,imageButton5,imageButton6,imageButton7,imageButton8;
@@ -222,6 +217,10 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 					new DialogInterface.OnClickListener() {
 						public void onClick(DialogInterface dialog,
 								int which) {
+							//delete
+							//deleteClass a = new deleteClass();
+							
+							{}
 							Intent intent4 = new Intent(PackageBOX.this, PackageBOX.class);
 							try {
 								startActivity(intent4);
@@ -257,4 +256,3 @@ public class PackageBOX extends Activity implements View.OnClickListener {
 	}
 
 }
-

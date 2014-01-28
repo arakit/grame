@@ -61,21 +61,22 @@ public class Title extends Activity implements View.OnClickListener {
 	@Override
 	public void onClick(View v) {
 		if (v == imageButton){
-			Intent intent1 = new Intent(Title.this, PackageBOX.class);
+			Intent intent1 = new Intent(Title.this, CameraEx.class);
 			try {
 				startActivity(intent1);
 			} catch (Exception e) {
 
 			}
 		}else if (v == imageButton2){
-			Intent intent1 = new Intent(Title.this, MainActivity.class);
-			try {
-				startActivity(intent1);
-			} catch (Exception e) {
-
-			}
+			Intentto();
 		}
 	}
+	
+	public void Intentto(){
+    	Intent intent = new Intent();
+    	intent.setClassName("com.example.graffitimessage", "com.example.graffitimessage.UketeActivity");
+    	startActivity(intent);
+    	}
 
 	@Override
 	public boolean dispatchKeyEvent(KeyEvent event) {

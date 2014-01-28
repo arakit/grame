@@ -43,7 +43,7 @@ public class SakuseiMenu extends Activity implements View.OnClickListener {
 		imageButton = new ImageButton(this);
 		imageButton.setImageBitmap(image);
 		imageButton.setOnClickListener(this);
-		image = BitmapFactory.decodeResource(getResources(), R.drawable.route);
+		image = BitmapFactory.decodeResource(getResources(), R.drawable.spot);
 		image = Bitmap.createScaledBitmap(image, w/10*9, h/6, false);
 		imageButton2 = new ImageButton(this);
 		imageButton2.setImageBitmap(image);

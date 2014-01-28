@@ -205,7 +205,7 @@ public class PuzzleView extends View {
 	
 	public void saveToFile(int a2, int s, int g){
 		 if(!sdcardWriteReady()){
-		 Toast.makeText(_context, "Please insert SDcardÅB", Toast.LENGTH_SHORT).show();
+		 Toast.makeText(_context, "Please insert SDcardÔøΩB", Toast.LENGTH_SHORT).show();
 		 return;
 		 }
 		 
@@ -222,9 +222,9 @@ public class PuzzleView extends View {
 		 }
 		 for(int i=s; i<g; i++){
 			 
-			 //âÊëúçÏê¨
+			 //ÔøΩÊëúÔøΩÏê¨
 			 if(PuzzleActivity.a2==2){
-				    //ÇQï™äÑ
+				    //ÔøΩQÔøΩÔøΩÔøΩÔøΩ
 			        a = h/2;
 			        aa = (int)a;
 			        b = w;
@@ -233,7 +233,7 @@ public class PuzzleView extends View {
 			        else
 			        p = Bitmap.createBitmap(image, 0, aa, b, aa);
 				 }else if(PuzzleActivity.a2==3){
-			        //ÇRï™äÑ
+			        //ÔøΩRÔøΩÔøΩÔøΩÔøΩ
 			        a = h/3;
 			        aa = (int)a;
 			        b = w;
@@ -244,7 +244,7 @@ public class PuzzleView extends View {
 			        if(i==4)
 			        p = Bitmap.createBitmap(image, 0, aa*2, b, aa);
 				 }else if(PuzzleActivity.a2==4){
-			        //ÇSï™äÑ
+			        //ÔøΩSÔøΩÔøΩÔøΩÔøΩ
 			        a = h/2;
 			        aa = (int)a;
 			        b = w/2;
@@ -257,7 +257,7 @@ public class PuzzleView extends View {
 			        if(i==8)
 			        p = Bitmap.createBitmap(image, b, aa, b, aa);
 				 }else if(PuzzleActivity.a2==5){
-			        //ÇTï™äÑ
+			        //ÔøΩTÔøΩÔøΩÔøΩÔøΩ
 			        a = w/3;
 			        aa = (int)a;
 			        b = h/2;
@@ -272,7 +272,7 @@ public class PuzzleView extends View {
 			        if(i==13)
 			        p = Bitmap.createBitmap(image, aa*2, b, aa, b);
 				 }else if(PuzzleActivity.a2==6){ 
-			        //ÇUï™äÑ
+			        //ÔøΩUÔøΩÔøΩÔøΩÔøΩ
 			        a = h/3;
 			        aa = (int)a;
 			        b = w/2;
@@ -289,7 +289,7 @@ public class PuzzleView extends View {
 			        if(i==19)
 			        p = Bitmap.createBitmap(image, b, aa*2, b, aa);
 				 }else if(PuzzleActivity.a2==7){  
-			        //ÇVï™äÑ
+			        //ÔøΩVÔøΩÔøΩÔøΩÔøΩ
 			        a = w/4;
 			        aa = (int)a;
 			        b = h/2;
@@ -308,7 +308,7 @@ public class PuzzleView extends View {
 			        if(i==26)
 			        p = Bitmap.createBitmap(image, aa*3, b, aa, b);
 				 }else if(PuzzleActivity.a2==8){  
-			        //ÇWï™äÑ
+			        //ÔøΩWÔøΩÔøΩÔøΩÔøΩ
 			        a = h/4;
 			        aa = (int)a;
 			        b = w/2;
@@ -329,7 +329,7 @@ public class PuzzleView extends View {
 			        if(i==34)
 			        p = Bitmap.createBitmap(image, b, aa*3, b, aa);
 				 }else if(PuzzleActivity.a2==9){   
-			        //ÇXï™äÑ
+			        //ÔøΩXÔøΩÔøΩÔøΩÔøΩ
 			        a = w/3;
 			        aa = (int)a;
 			        b = h/3;
@@ -352,7 +352,7 @@ public class PuzzleView extends View {
 			        if(i==43)
 			        p = Bitmap.createBitmap(image, aa*2, b*2, aa, b);
 				 }else if(PuzzleActivity.a2==10){   
-			        //ÇPÇOï™äÑ
+			        //ÔøΩPÔøΩOÔøΩÔøΩÔøΩÔøΩ
 			        a = h/5;
 			        aa = (int)a;
 			        b = w/2;
@@ -380,11 +380,17 @@ public class PuzzleView extends View {
 			 
 			 
 		 String AttachName = file.getAbsolutePath() + "/";
-		 AttachName += "puzzle"+a3+".jpg";
+		 AttachName += "puzzle"+a3+".png";
 		 a3++;
+		 Bitmap newbitmap = Bitmap.createBitmap(512,512, Bitmap.Config.ARGB_8888);
+		 if(PuzzleActivity.a2==2||PuzzleActivity.a2==3){
+			 newbitmap = Bitmap.createBitmap(1024,1024, Bitmap.Config.ARGB_8888);
+		 }
+		 Canvas saveImage = new Canvas(newbitmap);
+		 saveImage.drawBitmap(p, 0, 0, null);
 		 try {
 		 FileOutputStream out = new FileOutputStream(AttachName);
-		 p.compress(CompressFormat.JPEG, 100, out);
+		 newbitmap.compress(CompressFormat.PNG, 100, out);
 		 out.flush();
 		 out.close();
 		 } catch(Exception e) {

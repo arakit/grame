@@ -46,6 +46,8 @@
             android:noHistory="true"></activity>
         <activity android:name="jp.keipro2013.grame.MainActivity"
             android:noHistory="true"></activity>
+        <activity android:name="jp.keipro2013.grame.PackageList"
+            android:noHistory="true"></activity>
     </application>
    
     

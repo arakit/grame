@@ -90,7 +90,7 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 			} else if (a2 >= 2) {
 				AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
-				alertDialogBuilder.setMessage("これでパズル化してもいいですか？");
+				alertDialogBuilder.setMessage("これでパーツ化してもいいですか？");
 				alertDialogBuilder.setNegativeButton("はい",
 						new DialogInterface.OnClickListener() {
 							public void onClick(DialogInterface dialog,
@@ -149,7 +149,8 @@ public class PuzzleActivity extends Activity implements View.OnClickListener {
 														public void onClick(
 																DialogInterface dialog,
 																int which) {
-																Intent intent1 = new Intent(PuzzleActivity.this, SakuseiMenu.class);
+																//Intent intent1 = new Intent(PuzzleActivity.this, SakuseiMenu.class);
+																Intent intent1 = new Intent(PuzzleActivity.this, Title.class);
 																try {
 																	startActivity(intent1);
 																} catch (Exception e) {

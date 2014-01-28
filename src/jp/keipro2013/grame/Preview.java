@@ -106,8 +106,8 @@ public class Preview extends Activity implements View.OnClickListener {
 	
 	public void drawdialog(){
 		AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
-		//alertDialogBuilder.setMessage("この写真を保存しますか？");
-		alertDialogBuilder.setMessage("latitude:"+CameraEx.lat+"\nlongtitude:"+CameraEx.lon+"\naltitude:"+CameraEx.alt+"\ndirect:"+CameraEx.d+"\npitch:"+CameraEx.p+"\nroll:"+CameraEx.r+"\ngx:"+CameraEx.x+"\ngy:"+CameraEx.y+"\ngz:"+CameraEx.z);
+		alertDialogBuilder.setMessage("この写真を保存しますか？");
+		//alertDialogBuilder.setMessage("latitude:"+CameraEx.lat+"\nlongtitude:"+CameraEx.lon+"\naltitude:"+CameraEx.alt+"\ndirect:"+CameraEx.d+"\npitch:"+CameraEx.p+"\nroll:"+CameraEx.r+"\ngx:"+CameraEx.x+"\ngy:"+CameraEx.y+"\ngz:"+CameraEx.z);
 		alertDialogBuilder.setPositiveButton("いいえ",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

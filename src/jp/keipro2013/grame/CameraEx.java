@@ -1,8 +1,17 @@
 package jp.keipro2013.grame;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.StringReader;
 import java.util.List;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.HttpStatus;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.xmlpull.v1.XmlPullParser;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -24,6 +33,7 @@ import android.location.LocationManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Xml;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -52,6 +62,9 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 	static float d,p,r,x,y,z;
 	static float gx, gy, gz = 0;
 	static float direct, pitch, roll = 0;
+	
+	HttpResponse httpResponse;
+	static String ALT;
 	
 	CameraOverlay overlay;
 	Camera camera;
@@ -159,6 +172,8 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 			x = gx;
 			y = gy;
 			z = gz;
+			
+			getAltitude(lat,lon);
 			
 			CameraView.camera.takePicture(null,null,this);
 			CameraView.a=1;
@@ -293,5 +308,60 @@ public class CameraEx extends Activity implements LocationListener, View.OnClick
 		// TODO Auto-generated method stub
 		
 	}
+	
+private void getAltitude(double lat,double lon){
+        
+        HttpClient httpClient = new DefaultHttpClient();
+        //Google Elevation APIサービスにアクセスして標高取得
+    //ここではJSONではなくXMLで結果を返すようにしています
+        String uri = "http://maps.googleapis.com/maps/api/elevation/xml?locations=" + lat + "," + lon + "&sensor=true";
+        HttpGet request = new HttpGet(uri);
+        
+        
+        try {
+            httpResponse = httpClient.execute(request);
+        } catch (Exception e) {
+        	
+        }
+        
+        //int status = httpResponse.getStatusLine().getStatusCode();
+         
+        //if (HttpStatus.SC_OK == status) {
+            try {
+                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+                httpResponse.getEntity().writeTo(outputStream);
+        //パーサーに渡す
+                xml_parse(outputStream.toString());
+            } catch (Exception e) {
+
+            }
+       // } else {
+
+        //}
+    }
+    
+    //XMLパーサーで解析して標高値を取り出す
+    private void xml_parse(String str) {
+        try{
+            XmlPullParser xmlPullParser = Xml.newPullParser();
+            xmlPullParser.setInput(new StringReader(str));
+     
+            int eventType;
+            while ((eventType = xmlPullParser.next()) != XmlPullParser.END_DOCUMENT) {
+                if (eventType == XmlPullParser.START_TAG && "elevation".equals(xmlPullParser.getName())) {
+                    //Log.d("HttpSampleActivity", xmlPullParser.nextText());
+                    ALT = xmlPullParser.nextText();
+            //標高値の桁数調整
+                double temp = Double.parseDouble(ALT);
+                temp = temp * 100;
+                temp = Math.ceil(temp);
+                temp = temp / 100;
+                ALT = String.valueOf(temp);
+                    }
+            }
+        } catch (Exception e){
+
+        }
+    }
 
 }

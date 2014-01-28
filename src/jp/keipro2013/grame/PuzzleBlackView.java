@@ -367,10 +367,16 @@ public class PuzzleBlackView extends View {
 		 String AttachName = file.getAbsolutePath() + "/";
 		 AttachName += "puzzle"+a3+".jpg";
 		 a3++;
+		 Bitmap newbitmap = Bitmap.createBitmap(512,512, Bitmap.Config.ARGB_8888);
+		 if(PuzzleActivity.a2==2||PuzzleActivity.a2==3){
+			 newbitmap = Bitmap.createBitmap(1024,1024, Bitmap.Config.ARGB_8888);
+		 }
+		 Canvas saveImage = new Canvas(newbitmap);
+		 saveImage.drawBitmap(p, 0, 0, null);
 		 if(br[i]==1){
 		 try {
 		 FileOutputStream out = new FileOutputStream(AttachName);
-		 p.compress(CompressFormat.JPEG, 100, out);
+		 newbitmap.compress(CompressFormat.PNG, 100, out);
 		 out.flush();
 		 out.close();
 		 } catch(Exception e) {

@@ -76,7 +76,7 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 	    new AlertDialog.Builder(this)
     	.setCancelable(false)    	
     	.setMessage("塗りつぶしたいパーツをタップしてください。\nもう一度タップすると戻ります。")    	
-    	.setPositiveButton("�͂�",null)    	
+    	.setPositiveButton("はい",null)    	
     	.show();
 	    
 	    a2=PuzzleActivity.a2;
@@ -124,7 +124,8 @@ public class PuzzleBlack extends Activity implements View.OnClickListener {
 									imageview.saveToFile(a2, s, g);
 									hozon = 1;
 									
-									Intent intent1 = new Intent(PuzzleBlack.this, SakuseiMenu.class);
+									Intent intent1 = new Intent(PuzzleBlack.this, Title.class);
+									//Intent intent1 = new Intent(PuzzleBlack.this, SakuseiMenu.class);
 										
 									startActivity(intent1);
 										} catch (Exception e) {
